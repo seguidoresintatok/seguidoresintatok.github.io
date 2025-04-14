@@ -1,0 +1,2247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeMaster | Plataforma Gratuita de Programação</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-light: #4895ef;
+            --primary-dark: #3a0ca3;
+            --secondary: #7209b7;
+            --accent: #f72585;
+            --accent-light: #ff70a6;
+            --accent-dark: #d90452;
+            --highlight: #f8961e;
+            --success: #4cc9f0;
+            --success-dark: #38b6db;
+            --warning: #f9c74f;
+            --danger: #ef233c;
+            --info: #4895ef;
+            --dark: #14213d;
+            --darker: #0d1b2a;
+            --light: #f8f9fa;
+            --lighter: #ffffff;
+            --text: #2b2d42;
+            --text-light: #8d99ae;
+            --gradient: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            --gradient-accent: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            --border-radius: 16px;
+            --border-radius-sm: 8px;
+            --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --box-shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.8;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 6px;
+            border: 3px solid var(--light);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-light);
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            background: var(--lighter);
+            color: var(--text);
+            padding: 1.5rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        header.scrolled {
+            padding: 1rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 2rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--dark);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .logo-icon {
+            color: var(--accent);
+            margin-right: 0.5rem;
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+
+        .logo:hover .logo-icon {
+            transform: rotate(15deg);
+        }
+
+        .logo-text span {
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        /* Navigation */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-item {
+            margin-left: 2rem;
+            position: relative;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+            color: var(--dark);
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .nav-link i {
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: var(--transition);
+            border-radius: 3px;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: var(--dark);
+            z-index: 1001;
+            transition: var(--transition);
+            background: none;
+            border: none;
+        }
+
+        .menu-toggle:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient), 
+                        url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            color: var(--lighter);
+            padding: 15rem 0 10rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(13, 27, 42, 0.8);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            font-weight: 800;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-title span {
+            color: var(--accent-light);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: var(--accent);
+            z-index: -1;
+            opacity: 0.5;
+            border-radius: 4px;
+            transform: skewX(-15deg);
+        }
+
+        .hero-description {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.1rem 2.2rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            text-align: center;
+            text-decoration: none;
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn i {
+            margin-right: 0.7rem;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--lighter);
+            box-shadow: 0 5px 15px rgba(247, 37, 133, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(247, 37, 133, 0.5);
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0.3),
+                rgba(255, 255, 255, 0)
+            );
+            transform: rotate(30deg);
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover::after {
+            left: 100%;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--lighter);
+            border: 2px solid var(--lighter);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent);
+            color: var(--lighter);
+        }
+
+        .btn-sm {
+            padding: 0.7rem 1.4rem;
+            font-size: 0.95rem;
+        }
+
+        .btn-lg {
+            padding: 1.3rem 2.8rem;
+            font-size: 1.2rem;
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.35rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-primary {
+            background: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
+        }
+
+        .badge-success {
+            background: rgba(76, 201, 240, 0.1);
+            color: var(--success-dark);
+        }
+
+        .badge-warning {
+            background: rgba(249, 199, 79, 0.1);
+            color: #d4a017;
+        }
+
+        .badge-danger {
+            background: rgba(239, 35, 60, 0.1);
+            color: var(--danger);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: var(--lighter);
+            border-radius: var(--border-radius);
+            width: 100%;
+            max-width: 600px;
+            padding: 3rem;
+            box-shadow: var(--box-shadow-lg);
+            position: relative;
+            animation: modalFadeIn 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: var(--transition);
+            background: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close-modal:hover {
+            color: var(--accent);
+            transform: rotate(90deg);
+            background: rgba(247, 37, 133, 0.1);
+        }
+
+        /* PIX Payment */
+        .pix-container {
+            text-align: center;
+            margin: 2.5rem 0;
+        }
+
+        .pix-icon {
+            font-size: 5rem;
+            color: var(--success);
+            margin-bottom: 1.8rem;
+        }
+
+        .pix-title {
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+            color: var(--primary-dark);
+        }
+
+        .pix-description {
+            margin-bottom: 1.8rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .pix-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 1.5rem 0;
+        }
+
+        .pix-key-container {
+            background: rgba(76, 201, 240, 0.05);
+            border: 1px dashed var(--success);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin: 2rem 0;
+            transition: var(--transition);
+        }
+
+        .pix-key-container:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .pix-key {
+            font-family: 'Fira Code', monospace;
+            font-size: 1.3rem;
+            word-break: break-all;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .copy-pix {
+            display: inline-flex;
+            align-items: center;
+            background: var(--success);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius-sm);
+            padding: 1rem 2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(76, 201, 240, 0.3);
+        }
+
+        .copy-pix:hover {
+            background: var(--success-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(76, 201, 240, 0.4);
+        }
+
+        .copy-pix i {
+            margin-right: 0.7rem;
+        }
+
+        .pix-instructions {
+            margin-top: 2.5rem;
+            text-align: left;
+            background: rgba(247, 37, 133, 0.03);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid #e2e8f0;
+        }
+
+        .pix-instructions h5 {
+            color: var(--primary-dark);
+            margin-bottom: 1.2rem;
+            font-size: 1.4rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .pix-instructions h5::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+        }
+
+        .pix-instructions ol {
+            padding-left: 1.5rem;
+        }
+
+        .pix-instructions li {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--success);
+            color: white;
+            padding: 1.2rem 1.8rem;
+            border-radius: var(--border-radius-sm);
+            box-shadow: var(--box-shadow-lg);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: var(--transition);
+            max-width: 400px;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast i {
+            margin-right: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .toast.success {
+            background: var(--success);
+        }
+
+        .toast.error {
+            background: var(--danger);
+        }
+
+        .toast.warning {
+            background: var(--warning);
+            color: var(--dark);
+        }
+
+        .toast.info {
+            background: var(--info);
+        }
+
+        /* Courses Grid */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .course-item {
+            background: var(--lighter);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            margin-bottom: 2.5rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .course-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-lg);
+        }
+
+        .course-item-header {
+            padding: 1.5rem;
+            background: rgba(247, 37, 133, 0.05);
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .course-item-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 15px rgba(247, 37, 133, 0.3);
+        }
+
+        .course-item-title {
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+
+        .course-item-category {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+        }
+
+        .course-item-category i {
+            margin-right: 0.5rem;
+        }
+
+        .course-item-body {
+            padding: 1.5rem;
+        }
+
+        .course-item-description {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .course-item-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .course-item-meta span {
+            display: flex;
+            align-items: center;
+        }
+
+        .course-item-meta i {
+            margin-right: 0.5rem;
+        }
+
+        .course-item-footer {
+            padding: 1rem 1.5rem;
+            background: rgba(247, 37, 133, 0.03);
+            border-top: 1px solid #e2e8f0;
+        }
+
+        /* Course Content Page */
+        .course-content-page {
+            padding: 5rem 0;
+            display: none;
+        }
+        
+        .back-to-courses {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .back-to-courses i {
+            margin-right: 0.5rem;
+        }
+        
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 3rem;
+        }
+        
+        .content-section h3 {
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-light);
+        }
+        
+        /* Study Material */
+        .study-material {
+            background: var(--lighter);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .study-material h4 {
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+        
+        .study-material p {
+            margin-bottom: 1rem;
+        }
+        
+        .study-material ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Exercises */
+        .exercise {
+            background: var(--lighter);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--box-shadow);
+            border-left: 4px solid var(--highlight);
+        }
+        
+        .exercise h4 {
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+        
+        .exercise p {
+            margin-bottom: 1rem;
+        }
+        
+        .exercise-actions {
+            margin-top: 1.5rem;
+        }
+        
+        /* Quiz Section */
+        .quiz-section {
+            background: var(--lighter);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--box-shadow);
+            border-left: 4px solid var(--info);
+        }
+        
+        .quiz-section h4 {
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+        
+        .quiz-options {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        
+        .quiz-option {
+            margin-bottom: 0.5rem;
+            padding: 0.8rem;
+            background: rgba(67, 97, 238, 0.05);
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .quiz-option:hover {
+            background: rgba(67, 97, 238, 0.1);
+        }
+        
+        .quiz-option.selected {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .quiz-option.correct {
+            background: var(--success);
+            color: white;
+        }
+        
+        .quiz-option.incorrect {
+            background: var(--danger);
+            color: white;
+        }
+        
+        .quiz-result {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: var(--border-radius-sm);
+            display: none;
+        }
+        
+        .quiz-result.success {
+            background: rgba(76, 201, 240, 0.1);
+            border-left: 4px solid var(--success);
+            display: block;
+        }
+        
+        .quiz-result.error {
+            background: rgba(239, 35, 60, 0.1);
+            border-left: 4px solid var(--danger);
+            display: block;
+        }
+        
+        /* Code Editor */
+        .code-editor {
+            background: var(--darker);
+            border-radius: var(--border-radius-sm);
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Fira Code', monospace;
+            color: white;
+            overflow-x: auto;
+        }
+        
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background-color: var(--accent);
+            border-radius: 8px;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .progress-text {
+            text-align: right;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1440px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-description {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 85%;
+                max-width: 350px;
+                height: 100vh;
+                background: var(--lighter);
+                flex-direction: column;
+                padding: 6rem 2rem 2rem;
+                transition: var(--transition);
+                z-index: 1000;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-item {
+                margin: 0.8rem 0;
+                width: 100%;
+            }
+            
+            .nav-link {
+                padding: 1rem;
+                font-size: 1.1rem;
+                justify-content: flex-start;
+            }
+            
+            .hero {
+                padding: 12rem 0 6rem;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .modal-content {
+                padding: 2.5rem 1.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            
+            .hero {
+                padding: 10rem 0 5rem;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-description {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 1rem 1.8rem;
+                font-size: 1rem;
+            }
+            
+            .btn-lg {
+                padding: 1.2rem 2.2rem;
+                font-size: 1.1rem;
+            }
+            
+            .modal-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .modal-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-code logo-icon"></i>
+                <span class="logo-text">Code<span>Master</span></span>
+            </a>
+            
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">
+                        <i class="fas fa-home"></i> Início
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#cursos" class="nav-link">
+                        <i class="fas fa-book-open"></i> Cursos
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contato" class="nav-link">
+                        <i class="fas fa-envelope"></i> Contato
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-outline" id="supportBtn">
+                        <i class="fas fa-heart"></i> Apoiar Projeto
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Aprenda programação <span>gratuitamente</span>
+                </h1>
+                <p class="hero-description">
+                    Domine as tecnologias mais demandadas do mercado com nossa plataforma gratuita. Conteúdo teórico, exercícios práticos e provas para testar seu conhecimento.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#cursos" class="btn btn-primary btn-lg">
+                        <i class="fas fa-book"></i> Explorar Cursos
+                    </a>
+                    <button class="btn btn-secondary btn-lg" id="supportHeroBtn">
+                        <i class="fas fa-heart"></i> Apoiar Projeto
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cursos Section -->
+    <section id="cursos" class="container" style="padding: 5rem 0;">
+        <div class="section-title">
+            <h2>Nossos Cursos</h2>
+            <p>Escolha um curso para começar sua jornada na programação</p>
+        </div>
+        
+        <div class="courses-grid">
+            <!-- Curso de Java -->
+            <div class="course-item">
+                <div class="course-item-header">
+                    <div class="course-item-icon">
+                        <i class="fab fa-java"></i>
+                    </div>
+                    <h3 class="course-item-title">Java Completo</h3>
+                    <p class="course-item-category">
+                        <i class="fas fa-layer-group"></i> Programação Backend
+                    </p>
+                </div>
+                <div class="course-item-body">
+                    <p class="course-item-description">
+                        Domine Java desde os fundamentos até técnicas avançadas como programação funcional, concorrência e desenvolvimento de APIs REST com Spring Boot.
+                    </p>
+                    <div class="course-item-meta">
+                        <span><i class="fas fa-clock"></i> 80 horas</span>
+                        <span><i class="fas fa-signal"></i> Iniciante a Avançado</span>
+                    </div>
+                </div>
+                <div class="course-item-footer">
+                    <button class="btn btn-primary btn-block start-course" data-course="java">
+                        <i class="fas fa-play"></i> Começar Curso
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Curso de HTML/CSS -->
+            <div class="course-item">
+                <div class="course-item-header">
+                    <div class="course-item-icon">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h3 class="course-item-title">HTML & CSS Moderno</h3>
+                    <p class="course-item-category">
+                        <i class="fas fa-layer-group"></i> Frontend Development
+                    </p>
+                </div>
+                <div class="course-item-body">
+                    <p class="course-item-description">
+                        Aprenda HTML5, CSS3, Flexbox, Grid, animações e design responsivo para criar websites modernos e atraentes.
+                    </p>
+                    <div class="course-item-meta">
+                        <span><i class="fas fa-clock"></i> 50 horas</span>
+                        <span><i class="fas fa-signal"></i> Iniciante</span>
+                    </div>
+                </div>
+                <div class="course-item-footer">
+                    <button class="btn btn-primary btn-block start-course" data-course="html">
+                        <i class="fas fa-play"></i> Começar Curso
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Curso de JavaScript -->
+            <div class="course-item">
+                <div class="course-item-header">
+                    <div class="course-item-icon">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <h3 class="course-item-title">JavaScript Moderno</h3>
+                    <p class="course-item-category">
+                        <i class="fas fa-layer-group"></i> Fullstack Development
+                    </p>
+                </div>
+                <div class="course-item-body">
+                    <p class="course-item-description">
+                        Aprenda JavaScript moderno (ES6+), TypeScript, Node.js e Express. Construa aplicações fullstack com as tecnologias mais demandadas do mercado.
+                    </p>
+                    <div class="course-item-meta">
+                        <span><i class="fas fa-clock"></i> 65 horas</span>
+                        <span><i class="fas fa-signal"></i> Intermediário</span>
+                    </div>
+                </div>
+                <div class="course-item-footer">
+                    <button class="btn btn-primary btn-block start-course" data-course="js">
+                        <i class="fas fa-play"></i> Começar Curso
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Curso de Python -->
+            <div class="course-item">
+                <div class="course-item-header">
+                    <div class="course-item-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3 class="course-item-title">Python Completo</h3>
+                    <p class="course-item-category">
+                        <i class="fas fa-layer-group"></i> Backend & Data Science
+                    </p>
+                </div>
+                <div class="course-item-body">
+                    <p class="course-item-description">
+                        Domine Python desde o básico até desenvolvimento web com Django/Flask e análise de dados com Pandas, NumPy e Matplotlib.
+                    </p>
+                    <div class="course-item-meta">
+                        <span><i class="fas fa-clock"></i> 70 horas</span>
+                        <span><i class="fas fa-signal"></i> Iniciante a Avançado</span>
+                    </div>
+                </div>
+                <div class="course-item-footer">
+                    <button class="btn btn-primary btn-block start-course" data-course="python">
+                        <i class="fas fa-play"></i> Começar Curso
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conteúdo dos Cursos -->
+    
+    <!-- Curso de Java -->
+    <div id="java-course" class="container course-content-page">
+        <a href="#cursos" class="back-to-courses">
+            <i class="fas fa-arrow-left"></i> Voltar para todos os cursos
+        </a>
+        
+        <div class="section-title">
+            <h2>Java Completo</h2>
+            <p>Domine Java desde os fundamentos até técnicas avançadas</p>
+            
+            <div class="progress-container">
+                <div class="progress-bar" id="java-progress"></div>
+                <div class="progress-text" id="java-progress-text">0% completo</div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h3>Conteúdo para Estudo</h3>
+            
+            <div class="study-material">
+                <h4>Fundamentos da Linguagem Java</h4>
+                <p>Java é uma linguagem de programação orientada a objetos desenvolvida na década de 90. Alguns conceitos fundamentais:</p>
+                <ul>
+                    <li>Sintaxe básica e estrutura de programas Java</li>
+                    <li>Tipos de dados primitivos e wrappers</li>
+                    <li>Operadores e estruturas de controle</li>
+                    <li>Arrays e coleções básicas</li>
+                </ul>
+                <div class="code-editor">
+                    // Exemplo de código Java<br>
+                    public class Main {<br>
+                    &nbsp;&nbsp;public static void main(String[] args) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Hello, World!");<br>
+                    &nbsp;&nbsp;}<br>
+                    }
+                </div>
+            </div>
+            
+            <div class="study-material">
+                <h4>Programação Orientada a Objetos</h4>
+                <p>Os quatro pilares da POO em Java:</p>
+                <ol>
+                    <li><strong>Abstração:</strong> Classes e objetos</li>
+                    <li><strong>Encapsulamento:</strong> Modificadores de acesso</li>
+                    <li><strong>Herança:</strong> Extends e implements</li>
+                    <li><strong>Polimorfismo:</strong> Sobrecarga e sobrescrita</li>
+                </ol>
+            </div>
+            
+            <div class="study-material">
+                <h4>Tratamento de Exceções</h4>
+                <p>Como lidar com erros em Java:</p>
+                <ul>
+                    <li>try-catch-finally</li>
+                    <li>Checked vs Unchecked exceptions</li>
+                    <li>Criando exceções personalizadas</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h3>Exercícios Práticos</h3>
+            
+            <div class="exercise">
+                <h4>Exercício 1: Calculadora Básica</h4>
+                <p>Crie uma classe Calculadora com métodos para as quatro operações básicas (soma, subtração, multiplicação e divisão).</p>
+                <p><strong>Requisitos:</strong></p>
+                <ul>
+                    <li>Métodos devem receber dois números e retornar o resultado</li>
+                    <li>Tratar divisão por zero</li>
+                    <li>Criar classe Main para testar os métodos</li>
+                </ul>
+                <div class="exercise-actions">
+                    <button class="btn btn-outline btn-sm show-solution">
+                        <i class="fas fa-lightbulb"></i> Ver Solução
+                    </button>
+                </div>
+            </div>
+            
+            <div class="exercise">
+                <h4>Exercício 2: Sistema Bancário</h4>
+                <p>Implemente um sistema bancário simples com classes Conta, ContaCorrente e ContaPoupanca.</p>
+                <p><strong>Requisitos:</strong></p>
+                <ul>
+                    <li>Classe Conta com atributos número, titular e saldo</li>
+                    <li>Métodos depositar(), sacar() e transferir()</li>
+                    <li>ContaPoupanca com método aplicarRendimento()</li>
+                </ul>
+                <div class="exercise-actions">
+                    <button class="btn btn-outline btn-sm show-solution">
+                        <i class="fas fa-lightbulb"></i> Ver Solução
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h3>Prova de Conhecimento</h3>
+            
+            <div class="quiz-section">
+                <h4>Prova: Fundamentos de Java</h4>
+                <p>Teste seu conhecimento com estas 5 questões sobre Java básico:</p>
+                
+                <div class="quiz-question">
+                    <p>1. Qual é o tipo de dado em Java que representa um valor verdadeiro ou falso?</p>
+                    <ul class="quiz-options">
+                        <li class="quiz-option" data-correct="false">A) int</li>
+                        <li class="quiz-option" data-correct="true">B) boolean</li>
+                        <li class="quiz-option" data-correct="false">C) String</li>
+                        <li class="quiz-option" data-correct="false">D) float</li>
+                    </ul>
+                </div>
+                
+                <div class="quiz-question">
+                    <p>2. Qual palavra-chave é usada para criar uma instância de uma classe em Java?</p>
+                    <ul class="quiz-options">
+                        <li class="quiz-option" data-correct="false">A) class</li>
+                        <li class="quiz-option" data-correct="true">B) new</li>
+                        <li class="quiz-option" data-correct="false">C) this</li>
+                        <li class="quiz-option" data-correct="false">D) extends</li>
+                    </ul>
+                </div>
+                
+                <div class="quiz-question">
+                    <p>3. Qual método é o ponto de entrada de um programa Java?</p>
+                    <ul class="quiz-options">
+                        <li class="quiz-option" data-correct="false">A) start()</li>
+                        <li class="quiz-option" data-correct="false">B) init()</li>
+                        <li class="quiz-option" data-correct="true">C) main()</li>
+                        <li class="quiz-option" data-correct="false">D) run()</li>
+                    </ul>
+                </div>
+                
+                <div class="quiz-result">
+                    <p>Você acertou <span id="java-score">0</span> de 3 questões.</p>
+                    <p id="java-feedback"></p>
+                </div>
+                
+                <div class="exercise-actions">
+                    <button class="btn btn-primary submit-quiz" data-course="java">
+                        <i class="fas fa-paper-plane"></i> Enviar Respostas
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Curso de HTML/CSS -->
+    <div id="html-course" class="container course-content-page">
+        <a href="#cursos" class="back-to-courses">
+            <i class="fas fa-arrow-left"></i> Voltar para todos os cursos
+        </a>
+        
+        <div class="section-title">
+            <h2>HTML & CSS Moderno</h2>
+            <p>Aprenda a criar websites modernos e responsivos</p>
+            
+            <div class="progress-container">
+                <div class="progress-bar" id="html-progress"></div>
+                <div class="progress-text" id="html-progress-text">0% completo</div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h3>Conteúdo para Estudo</h3>
+            
+            <div class="study-material">
+                <h4>HTML5 Semântico</h4>
+                <p>HTML5 introduziu elementos semânticos que melhoram a estrutura e acessibilidade:</p>
+                <ul>
+                    <li>&lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;footer&gt;</li>
+                    <li>&lt;article&gt;, &lt;section&gt;, &lt;aside&gt;</li>
+                    <li>&lt;figure&gt; e &lt;figcaption&gt; para imagens</li>
+                    <li>Formulários avançados com novos tipos de input</li>
+                </ul>
+                <div class="code-editor">
+                    &lt;!DOCTYPE html&gt;<br>
+                    &lt;html&gt;<br>
+                    &lt;head&gt;<br>
+                    &nbsp;&nbsp;&lt;title&gt;Página Semântica&lt;/title&gt;<br>
+                    &lt;/head&gt;<br>
+                    &lt;body&gt;<br>
+                    &nbsp;&nbsp;&lt;header&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Meu Site&lt;/h1&gt;<br>
+                    &nbsp;&nbsp;&lt;/header&gt;<br>
+                    &nbsp;&nbsp;&lt;nav&gt;...&lt;/nav&gt;<br>
+                    &nbsp;&nbsp;&lt;main&gt;...&lt;/main&gt;<br>
+                    &lt;/body&gt;<br>
+                    &lt;/html&gt;
+                </div>
+            </div>
+            
+            <div class="study-material">
+                <h4>CSS3 Moderno</h4>
+                <p>Recursos avançados do CSS3 para layouts modernos:</p>
+                <ol>
+                    <li><strong>Flexbox:</strong> Layout unidimensional</li>
+                    <li><strong>Grid:</strong> Layout bidimensional</li>
+                    <li><strong>Animações:</strong> @keyframes e transitions</li>
+                    <li><strong>Variáveis CSS:</strong> Para valores reutilizáveis</li>
+                </ol>
+            </div>
+            
+            <div class="study-material">
+                <h4>Design Responsivo</h4>
+                <p>Técnicas para criar sites que funcionam em qualquer dispositivo:</p>
+                <ul>
+                    <li>Media queries</li>
+                    <li>Unidades relativas (em, rem, vh, vw)</li>
+                    <li>Imagens responsivas</li>
+                    <li>Mobile-first design</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h3>Exercícios Práticos</h3>
+            
+            <div class="exercise">
+                <h4>Exercício 1: Layout com Flexbox</h4>
+                <p>Crie um layout de galeria de imagens responsiva usando Flexbox.</p>
+                <p><strong>Requisitos:</strong></p>
+                <ul>
+                    <li>6 imagens dispostas em 2 linhas de 3 colunas em desktop</li>
+                    <li>Em mobile, deve ficar 1 coluna com 6 linhas</li>
+                    <li>Adicionar hover effects nas imagens</li>
+                </ul>
+                <div class="exercise-actions">
+                    <button class="btn btn-outline btn-sm show-solution">
+                        <i class="fas fa-lightbulb"></i> Ver Solução
+                    </button>
+                </div>
+            </div>
+            
+            <div class="exercise">
+                <h4>Exercício 2: Formulário Acessível</h4>
+                <p>Crie um formulário de contato semântico e acessível.</p>
+                <p><strong>Requisitos:</strong></p>
+                <ul>
+                    <li>Campos: nome, email, telefone, mensagem</li>
+                    <li>Validação básica com HTML5</li>
+                    <li>Estilização moderna com CSS</li>
+                    <li>Labels associados corretamente aos inputs</li>
+                </ul>
+                <div class="exercise-actions">
+                    <button class="btn btn-outline btn-sm show-solution">
+                        <i class="fas fa-lightbulb"></i> Ver Solução
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h3>Prova de Conhecimento</h3>
+            
+            <div class="quiz-section">
+                <h4>Prova: HTML5 e CSS3</h4>
+                <p>Teste seu conhecimento com estas 5 questões sobre HTML e CSS:</p>
+                
+                <div class="quiz-question">
+                    <p>1. Qual elemento HTML5 é usado para representar conteúdo independente?</p>
+                    <ul class="quiz-options">
+                        <li class="quiz-option" data-correct="false">A) &lt;div&gt;</li>
+                        <li class="quiz-option" data-correct="true">B) &lt;article&gt;</li>
+                        <li class="quiz-option" data-correct="false">C) &lt;section&gt;</li>
+                        <li class="quiz-option" data-correct="false">D) &lt;span&gt;</li>
+                    </ul>
+                </div>
+                
+                <div class="quiz-question">
+                    <p>2. Qual propriedade CSS é usada para criar layouts flexbox?</p>
+                    <ul class="quiz-options">
+                        <li class="quiz-option" data-correct="false">A) display: grid</li>
+                        <li class="quiz-option" data-correct="true">B) display: flex</li>
+                        <li class="quiz-option" data-correct="false">C) display: block</li>
+                        <li class="quiz-option" data-correct="false">D) display: inline</li>
+                    </ul>
+                </div>
+                
+                <div class="quiz-question">
+                    <p>3. Qual meta tag é essencial para design responsivo?</p>
+                    <ul class="quiz-options">
+                        <li class="quiz-option" data-correct="true">A) &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</li>
+                        <li class="quiz-option" data-correct="false">B) &lt;meta charset="UTF-8"&gt;</li>
+                        <li class="quiz-option" data-correct="false">C) &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;</li>
+                        <li class="quiz-option" data-correct="false">D) &lt;meta name="description" content="..."&gt;</li>
+                    </ul>
+                </div>
+                
+                <div class="quiz-result">
+                    <p>Você acertou <span id="html-score">0</span> de 3 questões.</p>
+                    <p id="html-feedback"></p>
+                </div>
+                
+                <div class="exercise-actions">
+                    <button class="btn btn-primary submit-quiz" data-course="html">
+                        <i class="fas fa-paper-plane"></i> Enviar Respostas
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Curso de JavaScript -->
+    <div id="js-course" class="container course-content-page">
+        <a href="#cursos" class="back-to-courses">
+            <i class="fas fa-arrow-left"></i> Voltar para todos os cursos
+        </a>
+        
+        <div class="section-title">
+            <h2>JavaScript Moderno</h2>
+            <p>Aprenda JavaScript ES6+, TypeScript e Node.js</p>
+            
+            <div class="progress-container">
+                <div class="progress-bar" id="js-progress"></div>
+                <div class="progress-text" id="js-progress-text">0% completo</div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h3>Conteúdo para Estudo</h3>
+            
+            <div class="study-material">
+                <h4>JavaScript Básico</h4>
+                <p>Fundamentos da linguagem JavaScript:</p>
+                <ul>
+                    <li>Variáveis (var, let, const)</li>
+                    <li>Tipos de dados e operadores</li>
+                    <li>Estruturas de controle (if, for, while)</li>
+                    <li>Funções e escopo</li>
+                </ul>
+                <div class="code-editor">
+                    // Exemplo de código JavaScript<br>
+                    function saudacao(nome) {<br>
+                    &nbsp;&nbsp;return `Olá, ${nome}!`;<br>
+                    }<br><br>
+                    
+                    const mensagem = saudacao("Mundo");<br>
+                    console.log(mensagem); // "Olá, Mundo!"
+                </div>
+            </div>
+            
+            <div class="study-material">
+                <h4>JavaScript Moderno (ES6+)</h4>
+                <p>Recursos modernos do JavaScript:</p>
+                <ol>
+                    <li><strong>Arrow functions:</strong> Sintaxe concisa para funções</li>
+                    <li><strong>Template literals:</strong> Strings com interpolação</li>
+                    <li><strong>Destructuring:</strong> Extração de valores de objetos/arrays</li>
+                    <li><strong>Async/await:</strong> Trabalhar com operações assíncronas</li>
+                </ol>
+            </div>
+            
+            <div class="study-material">
+                <h4>DOM Manipulation</h4>
+                <p>Como interagir com a página web:</p>
+                <ul>
+                    <li>Selecionar elementos (querySelector, getElementById)</li>
+                    <li>Adicionar/remover elementos</li>
+                    <li>Manipular classes e estilos</li>
+                    <li>Event listeners</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h3>Exercícios Práticos</h3>
+            
+            <div class="exercise">
+                <h4>Exercício 1: To-Do List</h4>
+                <p>Crie uma lista de tarefas interativa.</p>
+                <p><strong>Requisitos:</strong></p>
+                <ul>
+                    <li>Adicionar novas tarefas</li>
+                    <li>Marcar tarefas como completas</li>
+                    <li>Remover tarefas</li>
+                    <li>Salvar tarefas no localStorage</li>
+                </ul>
+                <div class="exercise-actions">
+                    <button class="btn btn-outline btn-sm show-solution">
+                        <i class="fas fa-lightbulb"></i> Ver Solução
+                    </button>
+                </div>
+            </div>
+            
+            <div class="exercise">
+                <h4>Exercício 2: Fetch API</h4>
+                <p>Consuma uma API pública e exiba os dados.</p>
+                <p><strong>Requisitos:</strong></p>
+                <ul>
+                    <li>Usar fetch ou axios para buscar dados</li>
+                    <li>Exibir os dados em uma tabela ou cards</li>
+                    <li>Tratar erros da requisição</li>
+                    <li>Adicionar loading enquanto os dados carregam</li>
+                </ul>
+                <div class="exercise-actions">
+                    <button class="btn btn-outline btn-sm show-solution">
+                        <i class="fas fa-lightbulb"></i> Ver Solução
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h3>Prova de Conhecimento</h3>
+            
+            <div class="quiz-section">
+                <h4>Prova: JavaScript Moderno</h4>
+                <p>Teste seu conhecimento com estas 5 questões sobre JavaScript:</p>
+                
+                <div class="quiz-question">
+                    <p>1. Qual método é usado para transformar um array em uma string?</p>
+                    <ul class="quiz-options">
+                        <li class="quiz-option" data-correct="false">A) array.toString()</li>
+                        <li class="quiz-option" data-correct="false">B) array.join()</li>
+                        <li class="quiz-option" data-correct="true">C) Ambos acima</li>
+                        <li class="quiz-option" data-correct="false">D) Nenhum dos acima</li>
+                    </ul>
+                </div>
+                
+                <div class="quiz-question">
+                    <p>2. Qual é a diferença entre let e var em JavaScript?</p>
+                    <ul class="quiz-options">
+                        <li class="quiz-option" data-correct="false">A) let tem escopo global, var tem escopo de função</li>
+                        <li class="quiz-option" data-correct="true">B) let tem escopo de bloco, var tem escopo de função</li>
+                        <li class="quiz-option" data-correct="false">C) Não há diferença</li>
+                        <li class="quiz-option" data-correct="false">D) var é mais moderno que let</li>
+                    </ul>
+                </div>
+                
+                <div class="quiz-question">
+                    <p>3. O que o operador spread (...) faz em JavaScript?</p>
+                    <ul class="quiz-options">
+                        <li class="quiz-option" data-correct="false">A) Concatena arrays</li>
+                        <li class="quiz-option" data-correct="false">B) Copia propriedades de objetos</li>
+                        <li class="quiz-option" data-correct="false">C) Passa múltiplos argumentos para funções</li>
+                        <li class="quiz-option" data-correct="true">D) Todas as opções acima</li>
+                    </ul>
+                </div>
+                
+                <div class="quiz-result">
+                    <p>Você acertou <span id="js-score">0</span> de 3 questões.</p>
+                    <p id="js-feedback"></p>
+                </div>
+                
+                <div class="exercise-actions">
+                    <button class="btn btn-primary submit-quiz" data-course="js">
+                        <i class="fas fa-paper-plane"></i> Enviar Respostas
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Curso de Python -->
+    <div id="python-course" class="container course-content-page">
+        <a href="#cursos" class="back-to-courses">
+            <i class="fas fa-arrow-left"></i> Voltar para todos os cursos
+        </a>
+        
+        <div class="section-title">
+            <h2>Python Completo</h2>
+            <p>Do básico ao desenvolvimento web e análise de dados</p>
+            
+            <div class="progress-container">
+                <div class="progress-bar" id="python-progress"></div>
+                <div class="progress-text" id="python-progress-text">0% completo</div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h3>Conteúdo para Estudo</h3>
+            
+            <div class="study-material">
+                <h4>Fundamentos de Python</h4>
+                <p>Python é uma linguagem de programação interpretada de alto nível:</p>
+                <ul>
+                    <li>Sintaxe limpa e legível</li>
+                    <li>Tipos de dados básicos (int, float, str, bool, list, tuple, dict, set)</li>
+                    <li>Estruturas de controle de fluxo</li>
+                    <li>Funções e módulos</li>
+                </ul>
+                <div class="code-editor">
+                    # Exemplo de código Python<br>
+                    def saudacao(nome):<br>
+                    &nbsp;&nbsp;return f"Olá, {nome}!"<br><br>
+                    
+                    mensagem = saudacao("Mundo")<br>
+                    print(mensagem)  # "Olá, Mundo!"
+                </div>
+            </div>
+            
+            <div class="study-material">
+                <h4>Programação Orientada a Objetos em Python</h4>
+                <p>Como implementar POO em Python:</p>
+                <ol>
+                    <li><strong>Classes e objetos:</strong> Definição e instanciação</li>
+                    <li><strong>Métodos:</strong> Instância, classe e estáticos</li>
+                    <li><strong>Herança:</strong> Simples e múltipla</li>
+                    <li><strong>Polimorfismo:</strong> Sobrescrita de métodos</li>
+                </ol>
+            </div>
+            
+            <div class="study-material">
+                <h4>Manipulação de Dados com Pandas</h4>
+                <p>Biblioteca essencial para análise de dados:</p>
+                <ul>
+                    <li>DataFrames e Series</li>
+                    <li>Leitura e escrita de arquivos (CSV, Excel)</li>
+                    <li>Filtragem e seleção de dados</li>
+                    <li>Operações estatísticas básicas</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h3>Exercícios Práticos</h3>
+            
+            <div class="exercise">
+                <h4>Exercício 1: Calculadora de IMC</h4>
+                <p>Crie uma função que calcula o Índice de Massa Corporal (IMC).</p>
+                <p><strong>Requisitos:</strong></p>
+                <ul>
+                    <li>Receber peso (kg) e altura (m)</li>
+                    <li>Retornar o IMC e a classificação</li>
+                    <li>Tratar entradas inválidas</li>
+                    <li>Criar interface simples com input()</li>
+                </ul>
+                <div class="exercise-actions">
+                    <button class="btn btn-outline btn-sm show-solution">
+                        <i class="fas fa-lightbulb"></i> Ver Solução
+                    </button>
+                </div>
+            </div>
+            
+            <div class="exercise">
+                <h4>Exercício 2: Análise de Dados</h4>
+                <p>Analise um dataset de vendas usando Pandas.</p>
+                <p><strong>Requisitos:</strong></p>
+                <ul>
+                    <li>Carregar dados de um arquivo CSV</li>
+                    <li>Calcular total de vendas por produto</li>
+                    <li>Identificar o produto mais vendido</li>
+                    <li>Gerar um gráfico simples com Matplotlib</li>
+                </ul>
+                <div class="exercise-actions">
+                    <button class="btn btn-outline btn-sm show-solution">
+                        <i class="fas fa-lightbulb"></i> Ver Solução
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h3>Prova de Conhecimento</h3>
+            
+            <div class="quiz-section">
+                <h4>Prova: Python Básico</h4>
+                <p>Teste seu conhecimento com estas 5 questões sobre Python:</p>
+                
+                <div class="quiz-question">
+                    <p>1. Como se define uma função em Python?</p>
+                    <ul class="quiz-options">
+                        <li class="quiz-option" data-correct="false">A) function minhaFuncao() {}</li>
+                        <li class="quiz-option" data-correct="true">B) def minha_funcao():</li>
+                        <li class="quiz-option" data-correct="false">C) def minhaFuncao() {}</li>
+                        <li class="quiz-option" data-correct="false">D) function minha_funcao():</li>
+                    </ul>
+                </div>
+                
+                <div class="quiz-question">
+                    <p>2. Qual estrutura de dados em Python é mutável e ordenada?</p>
+                    <ul class="quiz-options">
+                        <li class="quiz-option" data-correct="false">A) tuple</li>
+                        <li class="quiz-option" data-correct="true">B) list</li>
+                        <li class="quiz-option" data-correct="false">C) str</li>
+                        <li class="quiz-option" data-correct="false">D) set</li>
+                    </ul>
+                </div>
+                
+                <div class="quiz-question">
+                    <p>3. Como se itera sobre um dicionário em Python?</p>
+                    <ul class="quiz-options">
+                        <li class="quiz-option" data-correct="false">A) for key in dict.keys()</li>
+                        <li class="quiz-option" data-correct="false">B) for value in dict.values()</li>
+                        <li class="quiz-option" data-correct="false">C) for key, value in dict.items()</li>
+                        <li class="quiz-option" data-correct="true">D) Todas as opções acima</li>
+                    </ul>
+                </div>
+                
+                <div class="quiz-result">
+                    <p>Você acertou <span id="python-score">0</span> de 3 questões.</p>
+                    <p id="python-feedback"></p>
+                </div>
+                
+                <div class="exercise-actions">
+                    <button class="btn btn-primary submit-quiz" data-course="python">
+                        <i class="fas fa-paper-plane"></i> Enviar Respostas
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Support Modal -->
+    <div class="modal" id="supportModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeSupportModal" aria-label="Close modal">&times;</button>
+            <h3 class="modal-title">Apoie o Projeto</h3>
+            <p class="mb-3">Se você gostou dos nossos cursos gratuitos e deseja contribuir para que possamos continuar produzindo conteúdo de qualidade:</p>
+            
+            <div class="pix-container">
+                <div class="pix-icon">
+                    <i class="fab fa-pix"></i>
+                </div>
+                <h4 class="pix-title">Doação via PIX</h4>
+                <p class="pix-description">
+                    Qualquer valor é bem-vindo e nos ajuda a manter a plataforma gratuita para todos
+                </p>
+                
+                <div class="pix-key-container">
+                    <div class="pix-key">rifasort777@gmail.com</div>
+                    <button class="copy-pix" id="copyPixKey">
+                        <i class="fas fa-copy"></i> Copiar Chave
+                    </button>
+                </div>
+                
+                <div class="pix-instructions">
+                    <h5>Como realizar a doação:</h5>
+                    <ol>
+                        <li>Copie a chave PIX acima (botão "Copiar Chave")</li>
+                        <li>Abra o aplicativo do seu banco ou instituição financeira</li>
+                        <li>Selecione a opção PIX e escolha "PIX Copia e Cola"</li>
+                        <li>Cole a chave PIX copiada e confirme os dados</li>
+                        <li>Digite o valor que deseja doar</li>
+                        <li>Realize o pagamento</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <p class="text-center mt-3">
+                Obrigado por apoiar nossa iniciativa de educação gratuita!
+            </p>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Operação realizada com sucesso!</span>
+    </div>
+
+    <script>
+        // Mostrar notificação toast
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            
+            toastMessage.textContent = message;
+            toast.className = 'toast show ' + type;
+            
+            // Esconder após 4 segundos
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        }
+        
+        // Elementos do DOM
+        const supportModal = document.getElementById('supportModal');
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        const supportBtn = document.getElementById('supportBtn');
+        const supportHeroBtn = document.getElementById('supportHeroBtn');
+        const closeSupportModal = document.getElementById('closeSupportModal');
+        const copyPixKey = document.getElementById('copyPixKey');
+        
+        // Event Listeners
+        supportBtn.addEventListener('click', () => supportModal.style.display = 'flex');
+        supportHeroBtn.addEventListener('click', () => supportModal.style.display = 'flex');
+        closeSupportModal.addEventListener('click', () => supportModal.style.display = 'none');
+        
+        copyPixKey.addEventListener('click', () => {
+            navigator.clipboard.writeText('rifasort777@gmail.com');
+            copyPixKey.innerHTML = '<i class="fas fa-check"></i> Chave Copiada!';
+            showToast('Chave PIX copiada para a área de transferência!', 'success');
+            setTimeout(() => {
+                copyPixKey.innerHTML = '<i class="fas fa-copy"></i> Copiar Chave';
+            }, 2000);
+        });
+        
+        // Fechar modal ao clicar fora
+        window.addEventListener('click', (e) => {
+            if (e.target === supportModal) supportModal.style.display = 'none';
+        });
+        
+        // Fechar com ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                supportModal.style.display = 'none';
+            }
+        });
+        
+        // Menu mobile
+        menuToggle.addEventListener('click', toggleMenu);
+        
+        function toggleMenu() {
+            navMenu.classList.toggle('active');
+            menuToggle.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            menuToggle.setAttribute('aria-expanded', navMenu.classList.contains('active'));
+        }
+        
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navMenu.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        });
+        
+        // Navegação entre cursos
+        document.addEventListener('DOMContentLoaded', function() {
+            // Esconder todas as páginas de curso no início
+            document.querySelectorAll('.course-content-page').forEach(page => {
+                page.style.display = 'none';
+            });
+            
+            // Mostrar curso quando clicar em "Começar Curso"
+            document.querySelectorAll('.start-course').forEach(button => {
+                button.addEventListener('click', function() {
+                    const courseId = this.getAttribute('data-course');
+                    
+                    // Esconder a seção de listagem de cursos
+                    document.getElementById('cursos').style.display = 'none';
+                    
+                    // Mostrar o curso selecionado
+                    document.getElementById(courseId + '-course').style.display = 'block';
+                    
+                    // Rolagem suave para o topo do curso
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Atualizar progresso
+                    updateProgress(courseId);
+                });
+            });
+            
+            // Voltar para a listagem de cursos
+            document.querySelectorAll('.back-to-courses').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Esconder todas as páginas de curso
+                    document.querySelectorAll('.course-content-page').forEach(page => {
+                        page.style.display = 'none';
+                    });
+                    
+                    // Mostrar a listagem de cursos
+                    document.getElementById('cursos').style.display = 'block';
+                    
+                    // Rolagem suave para a seção de cursos
+                    document.getElementById('cursos').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Mostrar soluções de exercícios
+            document.querySelectorAll('.show-solution').forEach(button => {
+                button.addEventListener('click', function() {
+                    const exercise = this.closest('.exercise');
+                    const solution = document.createElement('div');
+                    solution.className = 'solution';
+                    
+                    // Soluções diferentes para cada exercício
+                    let solutionContent = '';
+                    const exerciseTitle = exercise.querySelector('h4').textContent;
+                    
+                    if (exerciseTitle.includes('Calculadora')) {
+                        solutionContent = `
+                            <h5>Solução:</h5>
+                            <div class="code-editor">
+                                public class Calculadora {<br>
+                                &nbsp;&nbsp;public double somar(double a, double b) {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;return a + b;<br>
+                                &nbsp;&nbsp;}<br><br>
+                                
+                                &nbsp;&nbsp;public double subtrair(double a, double b) {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;return a - b;<br>
+                                &nbsp;&nbsp;}<br><br>
+                                
+                                &nbsp;&nbsp;public double multiplicar(double a, double b) {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;return a * b;<br>
+                                &nbsp;&nbsp;}<br><br>
+                                
+                                &nbsp;&nbsp;public double dividir(double a, double b) {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;if (b == 0) {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw new ArithmeticException("Divisão por zero!");<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;return a / b;<br>
+                                &nbsp;&nbsp;}<br>
+                                }
+                            </div>
+                        `;
+                    } else if (exerciseTitle.includes('Sistema Bancário')) {
+                        solutionContent = `
+                            <h5>Solução:</h5>
+                            <div class="code-editor">
+                                public class Conta {<br>
+                                &nbsp;&nbsp;private String numero;<br>
+                                &nbsp;&nbsp;private String titular;<br>
+                                &nbsp;&nbsp;protected double saldo;<br><br>
+                                
+                                &nbsp;&nbsp;public Conta(String numero, String titular) {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;this.numero = numero;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;this.titular = titular;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;this.saldo = 0;<br>
+                                &nbsp;&nbsp;}<br><br>
+                                
+                                &nbsp;&nbsp;public void depositar(double valor) {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;if (valor > 0) {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;saldo += valor;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                                &nbsp;&nbsp;}<br><br>
+                                
+                                &nbsp;&nbsp;// Outros métodos aqui<br>
+                                }<br><br>
+                                
+                                public class ContaPoupanca extends Conta {<br>
+                                &nbsp;&nbsp;public void aplicarRendimento(double taxa) {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;saldo += saldo * taxa;<br>
+                                &nbsp;&nbsp;}<br>
+                                }
+                            </div>
+                        `;
+                    } else if (exerciseTitle.includes('Layout com Flexbox')) {
+                        solutionContent = `
+                            <h5>Solução:</h5>
+                            <div class="code-editor">
+                                /* CSS */<br>
+                                .gallery {<br>
+                                &nbsp;&nbsp;display: flex;<br>
+                                &nbsp;&nbsp;flex-wrap: wrap;<br>
+                                &nbsp;&nbsp;gap: 1rem;<br>
+                                &nbsp;&nbsp;justify-content: center;<br>
+                                }<br><br>
+                                
+                                .gallery-item {<br>
+                                &nbsp;&nbsp;flex: 1 1 30%; /* 3 colunas */<br>
+                                &nbsp;&nbsp;transition: transform 0.3s;<br>
+                                }<br><br>
+                                
+                                .gallery-item:hover {<br>
+                                &nbsp;&nbsp;transform: scale(1.05);<br>
+                                }<br><br>
+                                
+                                @media (max-width: 768px) {<br>
+                                &nbsp;&nbsp;.gallery-item {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;flex: 1 1 100%; /* 1 coluna */<br>
+                                &nbsp;&nbsp;}<br>
+                                }
+                            </div>
+                        `;
+                    } else if (exerciseTitle.includes('To-Do List')) {
+                        solutionContent = `
+                            <h5>Solução:</h5>
+                            <div class="code-editor">
+                                // JavaScript<br>
+                                const form = document.getElementById('todo-form');<br>
+                                const input = document.getElementById('todo-input');<br>
+                                const list = document.getElementById('todo-list');<br><br>
+                                
+                                form.addEventListener('submit', function(e) {<br>
+                                &nbsp;&nbsp;e.preventDefault();<br>
+                                &nbsp;&nbsp;const task = input.value.trim();<br>
+                                &nbsp;&nbsp;if (task) {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;addTask(task);<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;input.value = '';<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;saveTasks();<br>
+                                &nbsp;&nbsp;}<br>
+                                });<br><br>
+                                
+                                function addTask(task, isCompleted = false) {<br>
+                                &nbsp;&nbsp;const li = document.createElement('li');<br>
+                                &nbsp;&nbsp;li.innerHTML = `<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="${isCompleted ? 'completed' : ''}"&gt;${task}&lt;/span&gt;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;button class="delete"&gt;×&lt;/button&gt;<br>
+                                &nbsp;&nbsp;`;<br>
+                                &nbsp;&nbsp;list.appendChild(li);<br>
+                                }
+                            </div>
+                        `;
+                    } else if (exerciseTitle.includes('Calculadora de IMC')) {
+                        solutionContent = `
+                            <h5>Solução:</h5>
+                            <div class="code-editor">
+                                # Python<br>
+                                def calcular_imc(peso, altura):<br>
+                                &nbsp;&nbsp;try:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;imc = peso / (altura ** 2)<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;if imc < 18.5:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;classificacao = "Abaixo do peso"<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;elif 18.5 <= imc < 25:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;classificacao = "Peso normal"<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;elif 25 <= imc < 30:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;classificacao = "Sobrepeso"<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;else:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;classificacao = "Obesidade"<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;return imc, classificacao<br>
+                                &nbsp;&nbsp;except:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;return None, "Dados inválidos"<br><br>
+                                
+                                # Exemplo de uso:<br>
+                                peso = float(input("Digite seu peso em kg: "))<br>
+                                altura = float(input("Digite sua altura em metros: "))<br>
+                                imc, classificacao = calcular_imc(peso, altura)<br>
+                                print(f"Seu IMC é {imc:.2f} - {classificacao}")
+                            </div>
+                        `;
+                    }
+                    
+                    solution.innerHTML = solutionContent;
+                    exercise.appendChild(solution);
+                    this.style.display = 'none';
+                    
+                    // Atualizar progresso
+                    const courseId = this.closest('.course-content-page').id.replace('-course', '');
+                    updateProgress(courseId);
+                });
+            });
+            
+            // Seleção de respostas do quiz
+            document.querySelectorAll('.quiz-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remover seleção de outras opções na mesma pergunta
+                    const question = this.closest('.quiz-question');
+                    question.querySelectorAll('.quiz-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Selecionar esta opção
+                    this.classList.add('selected');
+                });
+            });
+            
+            // Envio de respostas do quiz
+            document.querySelectorAll('.submit-quiz').forEach(button => {
+                button.addEventListener('click', function() {
+                    const courseId = this.getAttribute('data-course');
+                    const quizSection = this.closest('.quiz-section');
+                    const questions = quizSection.querySelectorAll('.quiz-question');
+                    
+                    let correctAnswers = 0;
+                    let totalQuestions = 0;
+                    
+                    questions.forEach(question => {
+                        const selectedOption = question.querySelector('.quiz-option.selected');
+                        if (selectedOption) {
+                            totalQuestions++;
+                            if (selectedOption.getAttribute('data-correct') === 'true') {
+                                correctAnswers++;
+                                selectedOption.classList.add('correct');
+                            } else {
+                                selectedOption.classList.add('incorrect');
+                                // Mostrar a resposta correta
+                                question.querySelector('.quiz-option[data-correct="true"]').classList.add('correct');
+                            }
+                        }
+                    });
+                    
+                    // Mostrar resultado
+                    const resultElement = quizSection.querySelector('.quiz-result');
+                    const scoreElement = quizSection.querySelector(`#${courseId}-score`);
+                    const feedbackElement = quizSection.querySelector(`#${courseId}-feedback`);
+                    
+                    if (totalQuestions > 0) {
+                        const percentage = Math.round((correctAnswers / totalQuestions) * 100);
+                        scoreElement.textContent = correctAnswers;
+                        
+                        if (percentage >= 70) {
+                            resultElement.className = 'quiz-result success';
+                            feedbackElement.textContent = 'Parabéns! Você está indo muito bem no curso.';
+                        } else {
+                            resultElement.className = 'quiz-result error';
+                            feedbackElement.textContent = 'Revise o material e tente novamente. Você consegue!';
+                        }
+                        
+                        resultElement.style.display = 'block';
+                        
+                        // Atualizar progresso
+                        updateProgress(courseId);
+                        
+                        // Desabilitar botão após envio
+                        this.disabled = true;
+                    } else {
+                        showToast('Selecione pelo menos uma resposta antes de enviar.', 'error');
+                    }
+                });
+            });
+        });
+        
+        // Atualizar barra de progresso
+        function updateProgress(courseId) {
+            // Simular progresso baseado em atividades completas
+            const coursePage = document.getElementById(`${courseId}-course`);
+            const exercisesCompleted = coursePage.querySelectorAll('.solution').length;
+            const quizCompleted = coursePage.querySelector('.submit-quiz[disabled]') ? 1 : 0;
+            
+            // Progresso baseado em:
+            // - 50% por ler o material (sempre completo quando acessado)
+            // - 30% por completar exercícios (15% cada)
+            // - 20% por completar o quiz
+            const progress = 50 + (exercisesCompleted * 15) + (quizCompleted * 20);
+            
+            // Atualizar barra de progresso
+            const progressBar = document.getElementById(`${courseId}-progress`);
+            const progressText = document.getElementById(`${courseId}-progress-text`);
+            
+            progressBar.style.width = `${progress}%`;
+            progressText.textContent = `${progress}% completo`;
+            
+            // Cor da barra baseada no progresso
+            if (progress >= 70) {
+                progressBar.style.backgroundColor = 'var(--success)';
+            } else if (progress >= 30) {
+                progressBar.style.backgroundColor = 'var(--warning)';
+            } else {
+                progressBar.style.backgroundColor = 'var(--danger)';
+            }
+        }
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
