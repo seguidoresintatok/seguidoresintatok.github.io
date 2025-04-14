@@ -3,37 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeMaster | Plataforma Gratuita de Programação</title>
+    <title>CodeMaster | Aprenda Programação Gratuitamente</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #4361ee;
-            --primary-light: #4895ef;
-            --primary-dark: #3a0ca3;
-            --secondary: #7209b7;
-            --accent: #f72585;
-            --accent-light: #ff70a6;
-            --accent-dark: #d90452;
-            --highlight: #f8961e;
-            --success: #4cc9f0;
-            --success-dark: #38b6db;
-            --warning: #f9c74f;
-            --danger: #ef233c;
-            --info: #4895ef;
-            --dark: #14213d;
-            --darker: #0d1b2a;
-            --light: #f8f9fa;
-            --lighter: #ffffff;
-            --text: #2b2d42;
-            --text-light: #8d99ae;
+            --primary: #6C63FF;
+            --primary-light: #8B85FF;
+            --primary-dark: #4F46E5;
+            --secondary: #10B981;
+            --accent: #EC4899;
+            --accent-light: #F472B6;
+            --accent-dark: #DB2777;
+            --highlight: #F59E0B;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            --info: #3B82F6;
+            --dark: #1F2937;
+            --darker: #111827;
+            --light: #F9FAFB;
+            --lighter: #FFFFFF;
+            --text: #374151;
+            --text-light: #6B7280;
             --gradient: linear-gradient(135deg, var(--primary), var(--primary-dark));
             --gradient-accent: linear-gradient(135deg, var(--accent), var(--accent-dark));
-            --border-radius: 16px;
+            --gradient-dark: linear-gradient(135deg, var(--darker), #000);
+            --border-radius: 12px;
+            --border-radius-lg: 20px;
             --border-radius-sm: 8px;
-            --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            --box-shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.15);
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --box-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
@@ -43,23 +47,24 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--light);
             color: var(--text);
-            line-height: 1.8;
+            line-height: 1.6;
             scroll-behavior: smooth;
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4 {
-            font-family: 'Montserrat', sans-serif;
+        h1, h2, h3, h4, h5 {
+            font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
             color: var(--dark);
+            line-height: 1.3;
         }
 
         /* Scrollbar */
         ::-webkit-scrollbar {
-            width: 12px;
+            width: 10px;
             height: 8px;
         }
 
@@ -69,12 +74,12 @@
 
         ::-webkit-scrollbar-thumb {
             background: var(--primary);
-            border-radius: 6px;
-            border: 3px solid var(--light);
+            border-radius: 5px;
+            border: 2px solid var(--light);
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-light);
+            background: var(--primary-dark);
         }
 
         /* Container */
@@ -87,7 +92,7 @@
 
         /* Header */
         header {
-            background: var(--lighter);
+            background: rgba(255, 255, 255, 0.95);
             color: var(--text);
             padding: 1.5rem 0;
             position: fixed;
@@ -99,12 +104,12 @@
             transition: var(--transition);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         header.scrolled {
             padding: 1rem 0;
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         .header-container {
@@ -116,16 +121,16 @@
         .logo {
             display: flex;
             align-items: center;
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             text-decoration: none;
             color: var(--dark);
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
+            gap: 0.5rem;
         }
 
         .logo-icon {
             color: var(--accent);
-            margin-right: 0.5rem;
             font-size: 2rem;
             transition: var(--transition);
         }
@@ -135,7 +140,10 @@
         }
 
         .logo-text span {
-            color: var(--accent);
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             font-weight: 800;
         }
 
@@ -144,10 +152,10 @@
             display: flex;
             list-style: none;
             align-items: center;
+            gap: 1.5rem;
         }
 
         .nav-item {
-            margin-left: 2rem;
             position: relative;
         }
 
@@ -155,36 +163,28 @@
             display: flex;
             align-items: center;
             font-weight: 600;
-            padding: 0.5rem 0;
+            padding: 0.75rem 1rem;
             transition: var(--transition);
-            color: var(--dark);
+            color: var(--text);
             text-decoration: none;
             font-size: 1rem;
+            border-radius: var(--border-radius-sm);
         }
 
         .nav-link i {
             margin-right: 0.5rem;
             font-size: 1rem;
+            color: var(--primary);
         }
 
         .nav-link:hover {
-            color: var(--accent);
+            background: rgba(108, 99, 255, 0.1);
+            color: var(--primary-dark);
         }
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: var(--accent);
-            transition: var(--transition);
-            border-radius: 3px;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
+        .nav-link.active {
+            background: rgba(108, 99, 255, 0.1);
+            color: var(--primary-dark);
         }
 
         /* Mobile Menu */
@@ -197,31 +197,23 @@
             transition: var(--transition);
             background: none;
             border: none;
+            padding: 0.5rem;
+            border-radius: var(--border-radius-sm);
         }
 
         .menu-toggle:hover {
-            color: var(--accent);
+            background: rgba(108, 99, 255, 0.1);
+            color: var(--primary);
         }
 
         /* Hero Section */
         .hero {
-            background: var(--gradient), 
+            background: var(--gradient-dark), 
                         url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
             color: var(--lighter);
-            padding: 15rem 0 10rem;
+            padding: 12rem 0 8rem;
             position: relative;
             overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(13, 27, 42, 0.8);
-            z-index: 0;
         }
 
         .hero-content {
@@ -234,38 +226,24 @@
         }
 
         .hero-title {
-            font-size: 4rem;
+            font-size: 3.5rem;
             margin-bottom: 1.5rem;
             line-height: 1.2;
             font-weight: 800;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .hero-title span {
-            color: var(--accent-light);
-            position: relative;
-            display: inline-block;
-        }
-
-        .hero-title span::after {
-            content: '';
-            position: absolute;
-            bottom: 5px;
-            left: 0;
-            width: 100%;
-            height: 8px;
-            background: var(--accent);
-            z-index: -1;
-            opacity: 0.5;
-            border-radius: 4px;
-            transform: skewX(-15deg);
+            background: linear-gradient(to right, #fff, #e0e7ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .hero-description {
-            font-size: 1.4rem;
+            font-size: 1.25rem;
             margin-bottom: 2.5rem;
             opacity: 0.9;
             color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero-buttons {
@@ -281,13 +259,13 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 1.1rem 2.2rem;
+            padding: 1rem 2rem;
             border-radius: var(--border-radius);
             font-weight: 600;
             transition: var(--transition);
             border: none;
             cursor: pointer;
-            font-size: 1.1rem;
+            font-size: 1rem;
             text-align: center;
             text-decoration: none;
             white-space: nowrap;
@@ -297,50 +275,32 @@
 
         .btn i {
             margin-right: 0.7rem;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .btn-primary {
             background: var(--accent);
             color: var(--lighter);
-            box-shadow: 0 5px 15px rgba(247, 37, 133, 0.4);
+            box-shadow: var(--box-shadow);
         }
 
         .btn-primary:hover {
             background: var(--accent-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(247, 37, 133, 0.5);
-        }
-
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                to bottom right,
-                rgba(255, 255, 255, 0.3),
-                rgba(255, 255, 255, 0)
-            );
-            transform: rotate(30deg);
-            transition: var(--transition);
-        }
-
-        .btn-primary:hover::after {
-            left: 100%;
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow-lg);
         }
 
         .btn-secondary {
-            background: transparent;
+            background: rgba(255, 255, 255, 0.1);
             color: var(--lighter);
-            border: 2px solid var(--lighter);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow);
         }
 
         .btn-outline {
@@ -352,16 +312,17 @@
         .btn-outline:hover {
             background: var(--accent);
             color: var(--lighter);
+            transform: translateY(-2px);
         }
 
         .btn-sm {
-            padding: 0.7rem 1.4rem;
-            font-size: 0.95rem;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.9rem;
         }
 
         .btn-lg {
-            padding: 1.3rem 2.8rem;
-            font-size: 1.2rem;
+            padding: 1.25rem 2.5rem;
+            font-size: 1.1rem;
         }
 
         .btn-block {
@@ -369,38 +330,391 @@
             width: 100%;
         }
 
-        /* Badges */
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.35rem 0.8rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        /* Section Styles */
+        .section {
+            padding: 6rem 0;
         }
 
-        .badge-primary {
-            background: rgba(67, 97, 238, 0.1);
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Courses Grid */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .course-item {
+            background: var(--lighter);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .course-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--box-shadow-xl);
+        }
+
+        .course-item-header {
+            padding: 1.5rem;
+            background: var(--gradient);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-item-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .course-item-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .course-item-title {
+            margin-bottom: 0.5rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .course-item-category {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+        }
+
+        .course-item-category i {
+            margin-right: 0.5rem;
+        }
+
+        .course-item-body {
+            padding: 1.5rem;
+        }
+
+        .course-item-description {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .course-item-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .course-item-meta span {
+            display: flex;
+            align-items: center;
+        }
+
+        .course-item-meta i {
+            margin-right: 0.5rem;
             color: var(--primary);
         }
 
-        .badge-success {
-            background: rgba(76, 201, 240, 0.1);
-            color: var(--success-dark);
+        .course-item-footer {
+            padding: 1rem 1.5rem;
+            background: rgba(108, 99, 255, 0.03);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        .badge-warning {
-            background: rgba(249, 199, 79, 0.1);
-            color: #d4a017;
+        /* Course Content Page */
+        .course-content-page {
+            padding: 6rem 0;
+            display: none;
         }
-
-        .badge-danger {
-            background: rgba(239, 35, 60, 0.1);
+        
+        .back-to-courses {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius-sm);
+        }
+        
+        .back-to-courses:hover {
+            background: rgba(108, 99, 255, 0.1);
+        }
+        
+        .back-to-courses i {
+            margin-right: 0.5rem;
+        }
+        
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 3rem;
+        }
+        
+        .content-section h3 {
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--primary-light);
+            font-size: 1.75rem;
+        }
+        
+        /* Study Material */
+        .study-material {
+            background: var(--lighter);
+            border-radius: var(--border-radius-lg);
+            padding: 1.75rem;
+            margin-bottom: 1.75rem;
+            box-shadow: var(--box-shadow);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .study-material h4 {
+            margin-bottom: 1.25rem;
+            color: var(--primary-dark);
+            font-size: 1.4rem;
+        }
+        
+        .study-material p {
+            margin-bottom: 1.25rem;
+            color: var(--text);
+        }
+        
+        .study-material ul, .study-material ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.25rem;
+            color: var(--text);
+        }
+        
+        .study-material li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Code Editor */
+        .code-editor {
+            background: #1E293B;
+            border-radius: var(--border-radius);
+            padding: 1.25rem;
+            margin: 1.25rem 0;
+            font-family: 'Fira Code', monospace;
+            color: #E2E8F0;
+            overflow-x: auto;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            box-shadow: var(--box-shadow);
+        }
+        
+        /* Exercises */
+        .exercise {
+            background: var(--lighter);
+            border-radius: var(--border-radius-lg);
+            padding: 1.75rem;
+            margin-bottom: 1.75rem;
+            box-shadow: var(--box-shadow);
+            border-left: 4px solid var(--highlight);
+        }
+        
+        .exercise h4 {
+            margin-bottom: 1.25rem;
+            color: var(--primary-dark);
+            font-size: 1.4rem;
+        }
+        
+        .exercise p {
+            margin-bottom: 1.25rem;
+            color: var(--text);
+        }
+        
+        .exercise ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+        
+        .exercise-actions {
+            margin-top: 1.5rem;
+        }
+        
+        /* Quiz Section */
+        .quiz-section {
+            background: var(--lighter);
+            border-radius: var(--border-radius-lg);
+            padding: 1.75rem;
+            margin-bottom: 1.75rem;
+            box-shadow: var(--box-shadow);
+            border-left: 4px solid var(--info);
+        }
+        
+        .quiz-section h4 {
+            margin-bottom: 1.25rem;
+            color: var(--primary-dark);
+            font-size: 1.4rem;
+        }
+        
+        .quiz-options {
+            list-style: none;
+            margin-top: 1.25rem;
+        }
+        
+        .quiz-option {
+            margin-bottom: 0.75rem;
+            padding: 1rem;
+            background: rgba(59, 130, 246, 0.05);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+        
+        .quiz-option:hover {
+            background: rgba(59, 130, 246, 0.1);
+        }
+        
+        .quiz-option.selected {
+            background: var(--info);
+            color: white;
+            border-color: var(--info);
+        }
+        
+        .quiz-option.correct {
+            background: var(--success);
+            color: white;
+            border-color: var(--success);
+        }
+        
+        .quiz-option.incorrect {
+            background: var(--danger);
+            color: white;
+            border-color: var(--danger);
+        }
+        
+        .quiz-result {
+            margin-top: 1.75rem;
+            padding: 1.25rem;
+            border-radius: var(--border-radius);
+            display: none;
+            font-weight: 500;
+        }
+        
+        .quiz-result.success {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid var(--success);
+            display: block;
+            color: var(--success);
+        }
+        
+        .quiz-result.error {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--danger);
+            display: block;
             color: var(--danger);
         }
-
+        
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            background-color: #E5E7EB;
+            border-radius: var(--border-radius);
+            margin: 1.5rem 0;
+            height: 12px;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: var(--gradient-accent);
+            border-radius: var(--border-radius);
+            width: 0%;
+            transition: width 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.15) 25%,
+                transparent 25%,
+                transparent 50%,
+                rgba(255, 255, 255, 0.15) 50%,
+                rgba(255, 255, 255, 0.15) 75%,
+                transparent 75%,
+                transparent
+            );
+            background-size: 40px 40px;
+            animation: progressAnimation 2s linear infinite;
+        }
+        
+        @keyframes progressAnimation {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 40px 0;
+            }
+        }
+        
+        .progress-text {
+            text-align: right;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+        
         /* Modal */
         .modal {
             display: none;
@@ -424,11 +738,11 @@
 
         .modal-content {
             background: var(--lighter);
-            border-radius: var(--border-radius);
+            border-radius: var(--border-radius-lg);
             width: 100%;
             max-width: 600px;
             padding: 3rem;
-            box-shadow: var(--box-shadow-lg);
+            box-shadow: var(--box-shadow-xl);
             position: relative;
             animation: modalFadeIn 0.3s ease;
             max-height: 90vh;
@@ -461,7 +775,7 @@
         .close-modal:hover {
             color: var(--accent);
             transform: rotate(90deg);
-            background: rgba(247, 37, 133, 0.1);
+            background: rgba(236, 72, 153, 0.1);
         }
 
         /* PIX Payment */
@@ -497,9 +811,9 @@
         }
 
         .pix-key-container {
-            background: rgba(76, 201, 240, 0.05);
+            background: rgba(16, 185, 129, 0.05);
             border: 1px dashed var(--success);
-            border-radius: var(--border-radius);
+            border-radius: var(--border-radius-lg);
             padding: 2rem;
             margin: 2rem 0;
             transition: var(--transition);
@@ -507,7 +821,7 @@
 
         .pix-key-container:hover {
             transform: translateY(-5px);
-            box-shadow: var(--box-shadow);
+            box-shadow: var(--box-shadow-lg);
         }
 
         .pix-key {
@@ -525,19 +839,19 @@
             background: var(--success);
             color: white;
             border: none;
-            border-radius: var(--border-radius-sm);
+            border-radius: var(--border-radius);
             padding: 1rem 2rem;
             cursor: pointer;
             transition: var(--transition);
             font-weight: 600;
             font-size: 1.1rem;
-            box-shadow: 0 5px 15px rgba(76, 201, 240, 0.3);
+            box-shadow: var(--box-shadow);
         }
 
         .copy-pix:hover {
-            background: var(--success-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(76, 201, 240, 0.4);
+            background: #0D9F71;
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow-lg);
         }
 
         .copy-pix i {
@@ -547,10 +861,10 @@
         .pix-instructions {
             margin-top: 2.5rem;
             text-align: left;
-            background: rgba(247, 37, 133, 0.03);
+            background: rgba(236, 72, 153, 0.03);
             padding: 2rem;
-            border-radius: var(--border-radius);
-            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius-lg);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .pix-instructions h5 {
@@ -591,8 +905,8 @@
             background: var(--success);
             color: white;
             padding: 1.2rem 1.8rem;
-            border-radius: var(--border-radius-sm);
-            box-shadow: var(--box-shadow-lg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow-xl);
             z-index: 3000;
             display: flex;
             align-items: center;
@@ -629,288 +943,122 @@
             background: var(--info);
         }
 
-        /* Courses Grid */
-        .courses-grid {
+        /* Footer */
+        footer {
+            background: var(--darker);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
+            margin-bottom: 3rem;
         }
 
-        .course-item {
-            background: var(--lighter);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-            margin-bottom: 2.5rem;
-            border: 1px solid #e2e8f0;
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+            font-family: 'Space Grotesk', sans-serif;
+            margin-bottom: 1.5rem;
+            gap: 0.5rem;
         }
 
-        .course-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--box-shadow-lg);
+        .footer-logo-icon {
+            color: var(--accent);
+            font-size: 2rem;
         }
 
-        .course-item-header {
-            padding: 1.5rem;
-            background: rgba(247, 37, 133, 0.05);
-            border-bottom: 1px solid #e2e8f0;
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
         }
 
-        .course-item-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--accent);
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 5px 15px rgba(247, 37, 133, 0.3);
-        }
-
-        .course-item-title {
-            margin-bottom: 0.5rem;
-            color: var(--primary-dark);
-        }
-
-        .course-item-category {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            display: flex;
-            align-items: center;
-        }
-
-        .course-item-category i {
-            margin-right: 0.5rem;
-        }
-
-        .course-item-body {
-            padding: 1.5rem;
-        }
-
-        .course-item-description {
-            margin-bottom: 1.5rem;
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        .course-item-meta {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1.5rem;
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        .course-item-meta span {
-            display: flex;
-            align-items: center;
-        }
-
-        .course-item-meta i {
-            margin-right: 0.5rem;
-        }
-
-        .course-item-footer {
-            padding: 1rem 1.5rem;
-            background: rgba(247, 37, 133, 0.03);
-            border-top: 1px solid #e2e8f0;
-        }
-
-        /* Course Content Page */
-        .course-content-page {
-            padding: 5rem 0;
-            display: none;
-        }
-        
-        .back-to-courses {
-            display: inline-flex;
-            align-items: center;
-            margin-bottom: 2rem;
-            color: var(--accent);
-            font-weight: 600;
-            text-decoration: none;
-        }
-        
-        .back-to-courses i {
-            margin-right: 0.5rem;
-        }
-        
-        /* Content Sections */
-        .content-section {
-            margin-bottom: 3rem;
-        }
-        
-        .content-section h3 {
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--accent-light);
-        }
-        
-        /* Study Material */
-        .study-material {
-            background: var(--lighter);
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: var(--box-shadow);
-        }
-        
-        .study-material h4 {
-            margin-bottom: 1rem;
-            color: var(--primary-dark);
-        }
-        
-        .study-material p {
-            margin-bottom: 1rem;
-        }
-        
-        .study-material ul {
-            margin-left: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        /* Exercises */
-        .exercise {
-            background: var(--lighter);
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: var(--box-shadow);
-            border-left: 4px solid var(--highlight);
-        }
-        
-        .exercise h4 {
-            margin-bottom: 1rem;
-            color: var(--primary-dark);
-        }
-        
-        .exercise p {
-            margin-bottom: 1rem;
-        }
-        
-        .exercise-actions {
-            margin-top: 1.5rem;
-        }
-        
-        /* Quiz Section */
-        .quiz-section {
-            background: var(--lighter);
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: var(--box-shadow);
-            border-left: 4px solid var(--info);
-        }
-        
-        .quiz-section h4 {
-            margin-bottom: 1rem;
-            color: var(--primary-dark);
-        }
-        
-        .quiz-options {
-            list-style: none;
-            margin-top: 1rem;
-        }
-        
-        .quiz-option {
-            margin-bottom: 0.5rem;
-            padding: 0.8rem;
-            background: rgba(67, 97, 238, 0.05);
-            border-radius: var(--border-radius-sm);
-            cursor: pointer;
             transition: var(--transition);
         }
-        
-        .quiz-option:hover {
-            background: rgba(67, 97, 238, 0.1);
-        }
-        
-        .quiz-option.selected {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .quiz-option.correct {
-            background: var(--success);
-            color: white;
-        }
-        
-        .quiz-option.incorrect {
-            background: var(--danger);
-            color: white;
-        }
-        
-        .quiz-result {
-            margin-top: 1.5rem;
-            padding: 1rem;
-            border-radius: var(--border-radius-sm);
-            display: none;
-        }
-        
-        .quiz-result.success {
-            background: rgba(76, 201, 240, 0.1);
-            border-left: 4px solid var(--success);
-            display: block;
-        }
-        
-        .quiz-result.error {
-            background: rgba(239, 35, 60, 0.1);
-            border-left: 4px solid var(--danger);
-            display: block;
-        }
-        
-        /* Code Editor */
-        .code-editor {
-            background: var(--darker);
-            border-radius: var(--border-radius-sm);
-            padding: 1rem;
-            margin: 1rem 0;
-            font-family: 'Fira Code', monospace;
-            color: white;
-            overflow-x: auto;
-        }
-        
-        /* Progress Bar */
-        .progress-container {
-            width: 100%;
-            background-color: #e0e0e0;
-            border-radius: 8px;
-            margin: 1rem 0;
-        }
-        
-        .progress-bar {
-            height: 10px;
-            background-color: var(--accent);
-            border-radius: 8px;
-            width: 0%;
-            transition: width 0.5s ease;
-        }
-        
-        .progress-text {
-            text-align: right;
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-        
-        /* Responsive */
-        @media (max-width: 1440px) {
-            .hero-title {
-                font-size: 3.5rem;
-            }
+
+        .social-link:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
         }
 
+        .footer-links h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-light);
+        }
+
+        .footer-links a i {
+            font-size: 0.8rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
         @media (max-width: 1200px) {
             .hero-title {
                 font-size: 3rem;
             }
             
             .hero-description {
-                font-size: 1.2rem;
+                font-size: 1.15rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .section {
+                padding: 5rem 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
             }
         }
 
@@ -924,7 +1072,7 @@
                 top: 0;
                 right: -100%;
                 width: 85%;
-                max-width: 350px;
+                max-width: 320px;
                 height: 100vh;
                 background: var(--lighter);
                 flex-direction: column;
@@ -939,7 +1087,7 @@
             }
             
             .nav-item {
-                margin: 0.8rem 0;
+                margin: 0;
                 width: 100%;
             }
             
@@ -947,10 +1095,11 @@
                 padding: 1rem;
                 font-size: 1.1rem;
                 justify-content: flex-start;
+                border-radius: var(--border-radius-sm);
             }
             
             .hero {
-                padding: 12rem 0 6rem;
+                padding: 10rem 0 6rem;
             }
             
             .hero-title {
@@ -970,6 +1119,10 @@
             .modal-content {
                 padding: 2.5rem 1.8rem;
             }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 576px) {
@@ -978,19 +1131,19 @@
             }
             
             .hero {
-                padding: 10rem 0 5rem;
+                padding: 8rem 0 5rem;
             }
             
             .hero-title {
                 font-size: 2.2rem;
             }
             
-            .hero-description {
-                font-size: 1.1rem;
+            .section-title h2 {
+                font-size: 2rem;
             }
             
-            .section-title h2 {
-                font-size: 1.8rem;
+            .course-item {
+                max-width: 100%;
             }
         }
 
@@ -1000,20 +1153,20 @@
             }
             
             .btn {
-                padding: 1rem 1.8rem;
-                font-size: 1rem;
+                padding: 0.9rem 1.5rem;
+                font-size: 0.95rem;
             }
             
             .btn-lg {
-                padding: 1.2rem 2.2rem;
-                font-size: 1.1rem;
+                padding: 1.1rem 2rem;
+                font-size: 1rem;
             }
             
             .modal-content {
                 padding: 2rem 1.5rem;
             }
             
-            .modal-title {
+            .section-title h2 {
                 font-size: 1.8rem;
             }
         }
@@ -1034,7 +1187,7 @@
             
             <ul class="nav-menu" id="navMenu">
                 <li class="nav-item">
-                    <a href="#home" class="nav-link">
+                    <a href="#home" class="nav-link active">
                         <i class="fas fa-home"></i> Início
                     </a>
                 </li>
@@ -1062,10 +1215,10 @@
         <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title">
-                    Aprenda programação <span>gratuitamente</span>
+                    Transforme sua carreira com programação
                 </h1>
                 <p class="hero-description">
-                    Domine as tecnologias mais demandadas do mercado com nossa plataforma gratuita. Conteúdo teórico, exercícios práticos e provas para testar seu conhecimento.
+                    Aprenda as tecnologias mais demandadas do mercado com nossa plataforma gratuita. Domine conceitos fundamentais, resolva desafios práticos e prepare-se para o mercado de trabalho.
                 </p>
                 <div class="hero-buttons">
                     <a href="#cursos" class="btn btn-primary btn-lg">
@@ -1080,118 +1233,120 @@
     </section>
 
     <!-- Cursos Section -->
-    <section id="cursos" class="container" style="padding: 5rem 0;">
-        <div class="section-title">
-            <h2>Nossos Cursos</h2>
-            <p>Escolha um curso para começar sua jornada na programação</p>
-        </div>
-        
-        <div class="courses-grid">
-            <!-- Curso de Java -->
-            <div class="course-item">
-                <div class="course-item-header">
-                    <div class="course-item-icon">
-                        <i class="fab fa-java"></i>
-                    </div>
-                    <h3 class="course-item-title">Java Completo</h3>
-                    <p class="course-item-category">
-                        <i class="fas fa-layer-group"></i> Programação Backend
-                    </p>
-                </div>
-                <div class="course-item-body">
-                    <p class="course-item-description">
-                        Domine Java desde os fundamentos até técnicas avançadas como programação funcional, concorrência e desenvolvimento de APIs REST com Spring Boot.
-                    </p>
-                    <div class="course-item-meta">
-                        <span><i class="fas fa-clock"></i> 80 horas</span>
-                        <span><i class="fas fa-signal"></i> Iniciante a Avançado</span>
-                    </div>
-                </div>
-                <div class="course-item-footer">
-                    <button class="btn btn-primary btn-block start-course" data-course="java">
-                        <i class="fas fa-play"></i> Começar Curso
-                    </button>
-                </div>
+    <section id="cursos" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Cursos</h2>
+                <p>Aprenda com cursos completos e projetos práticos para desenvolver habilidades reais</p>
             </div>
             
-            <!-- Curso de HTML/CSS -->
-            <div class="course-item">
-                <div class="course-item-header">
-                    <div class="course-item-icon">
-                        <i class="fab fa-html5"></i>
+            <div class="courses-grid">
+                <!-- Curso de Java -->
+                <div class="course-item">
+                    <div class="course-item-header">
+                        <div class="course-item-icon">
+                            <i class="fab fa-java"></i>
+                        </div>
+                        <h3 class="course-item-title">Java Completo</h3>
+                        <p class="course-item-category">
+                            <i class="fas fa-layer-group"></i> Backend Development
+                        </p>
                     </div>
-                    <h3 class="course-item-title">HTML & CSS Moderno</h3>
-                    <p class="course-item-category">
-                        <i class="fas fa-layer-group"></i> Frontend Development
-                    </p>
-                </div>
-                <div class="course-item-body">
-                    <p class="course-item-description">
-                        Aprenda HTML5, CSS3, Flexbox, Grid, animações e design responsivo para criar websites modernos e atraentes.
-                    </p>
-                    <div class="course-item-meta">
-                        <span><i class="fas fa-clock"></i> 50 horas</span>
-                        <span><i class="fas fa-signal"></i> Iniciante</span>
+                    <div class="course-item-body">
+                        <p class="course-item-description">
+                            Domine Java desde os fundamentos até técnicas avançadas como programação funcional, concorrência e desenvolvimento de APIs REST com Spring Boot.
+                        </p>
+                        <div class="course-item-meta">
+                            <span><i class="fas fa-clock"></i> 80 horas</span>
+                            <span><i class="fas fa-signal"></i> Iniciante a Avançado</span>
+                        </div>
                     </div>
-                </div>
-                <div class="course-item-footer">
-                    <button class="btn btn-primary btn-block start-course" data-course="html">
-                        <i class="fas fa-play"></i> Começar Curso
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Curso de JavaScript -->
-            <div class="course-item">
-                <div class="course-item-header">
-                    <div class="course-item-icon">
-                        <i class="fab fa-js"></i>
-                    </div>
-                    <h3 class="course-item-title">JavaScript Moderno</h3>
-                    <p class="course-item-category">
-                        <i class="fas fa-layer-group"></i> Fullstack Development
-                    </p>
-                </div>
-                <div class="course-item-body">
-                    <p class="course-item-description">
-                        Aprenda JavaScript moderno (ES6+), TypeScript, Node.js e Express. Construa aplicações fullstack com as tecnologias mais demandadas do mercado.
-                    </p>
-                    <div class="course-item-meta">
-                        <span><i class="fas fa-clock"></i> 65 horas</span>
-                        <span><i class="fas fa-signal"></i> Intermediário</span>
+                    <div class="course-item-footer">
+                        <button class="btn btn-primary btn-block start-course" data-course="java">
+                            <i class="fas fa-play"></i> Começar Curso
+                        </button>
                     </div>
                 </div>
-                <div class="course-item-footer">
-                    <button class="btn btn-primary btn-block start-course" data-course="js">
-                        <i class="fas fa-play"></i> Começar Curso
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Curso de Python -->
-            <div class="course-item">
-                <div class="course-item-header">
-                    <div class="course-item-icon">
-                        <i class="fab fa-python"></i>
+                
+                <!-- Curso de HTML/CSS -->
+                <div class="course-item">
+                    <div class="course-item-header">
+                        <div class="course-item-icon">
+                            <i class="fab fa-html5"></i>
+                        </div>
+                        <h3 class="course-item-title">HTML & CSS Moderno</h3>
+                        <p class="course-item-category">
+                            <i class="fas fa-layer-group"></i> Frontend Development
+                        </p>
                     </div>
-                    <h3 class="course-item-title">Python Completo</h3>
-                    <p class="course-item-category">
-                        <i class="fas fa-layer-group"></i> Backend & Data Science
-                    </p>
-                </div>
-                <div class="course-item-body">
-                    <p class="course-item-description">
-                        Domine Python desde o básico até desenvolvimento web com Django/Flask e análise de dados com Pandas, NumPy e Matplotlib.
-                    </p>
-                    <div class="course-item-meta">
-                        <span><i class="fas fa-clock"></i> 70 horas</span>
-                        <span><i class="fas fa-signal"></i> Iniciante a Avançado</span>
+                    <div class="course-item-body">
+                        <p class="course-item-description">
+                            Aprenda HTML5, CSS3, Flexbox, Grid, animações e design responsivo para criar websites modernos e atraentes.
+                        </p>
+                        <div class="course-item-meta">
+                            <span><i class="fas fa-clock"></i> 50 horas</span>
+                            <span><i class="fas fa-signal"></i> Iniciante</span>
+                        </div>
+                    </div>
+                    <div class="course-item-footer">
+                        <button class="btn btn-primary btn-block start-course" data-course="html">
+                            <i class="fas fa-play"></i> Começar Curso
+                        </button>
                     </div>
                 </div>
-                <div class="course-item-footer">
-                    <button class="btn btn-primary btn-block start-course" data-course="python">
-                        <i class="fas fa-play"></i> Começar Curso
-                    </button>
+                
+                <!-- Curso de JavaScript -->
+                <div class="course-item">
+                    <div class="course-item-header">
+                        <div class="course-item-icon">
+                            <i class="fab fa-js"></i>
+                        </div>
+                        <h3 class="course-item-title">JavaScript Moderno</h3>
+                        <p class="course-item-category">
+                            <i class="fas fa-layer-group"></i> Fullstack Development
+                        </p>
+                    </div>
+                    <div class="course-item-body">
+                        <p class="course-item-description">
+                            Aprenda JavaScript moderno (ES6+), TypeScript, Node.js e Express. Construa aplicações fullstack com as tecnologias mais demandadas do mercado.
+                        </p>
+                        <div class="course-item-meta">
+                            <span><i class="fas fa-clock"></i> 65 horas</span>
+                            <span><i class="fas fa-signal"></i> Intermediário</span>
+                        </div>
+                    </div>
+                    <div class="course-item-footer">
+                        <button class="btn btn-primary btn-block start-course" data-course="js">
+                            <i class="fas fa-play"></i> Começar Curso
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Curso de Python -->
+                <div class="course-item">
+                    <div class="course-item-header">
+                        <div class="course-item-icon">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <h3 class="course-item-title">Python Completo</h3>
+                        <p class="course-item-category">
+                            <i class="fas fa-layer-group"></i> Backend & Data Science
+                        </p>
+                    </div>
+                    <div class="course-item-body">
+                        <p class="course-item-description">
+                            Domine Python desde o básico até desenvolvimento web com Django/Flask e análise de dados com Pandas, NumPy e Matplotlib.
+                        </p>
+                        <div class="course-item-meta">
+                            <span><i class="fas fa-clock"></i> 70 horas</span>
+                            <span><i class="fas fa-signal"></i> Iniciante a Avançado</span>
+                        </div>
+                    </div>
+                    <div class="course-item-footer">
+                        <button class="btn btn-primary btn-block start-course" data-course="python">
+                            <i class="fas fa-play"></i> Começar Curso
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1200,604 +1355,612 @@
     <!-- Conteúdo dos Cursos -->
     
     <!-- Curso de Java -->
-    <div id="java-course" class="container course-content-page">
-        <a href="#cursos" class="back-to-courses">
-            <i class="fas fa-arrow-left"></i> Voltar para todos os cursos
-        </a>
-        
-        <div class="section-title">
-            <h2>Java Completo</h2>
-            <p>Domine Java desde os fundamentos até técnicas avançadas</p>
+    <div id="java-course" class="course-content-page">
+        <div class="container">
+            <a href="#cursos" class="back-to-courses">
+                <i class="fas fa-arrow-left"></i> Voltar para todos os cursos
+            </a>
             
-            <div class="progress-container">
-                <div class="progress-bar" id="java-progress"></div>
-                <div class="progress-text" id="java-progress-text">0% completo</div>
-            </div>
-        </div>
-        
-        <div class="content-section">
-            <h3>Conteúdo para Estudo</h3>
-            
-            <div class="study-material">
-                <h4>Fundamentos da Linguagem Java</h4>
-                <p>Java é uma linguagem de programação orientada a objetos desenvolvida na década de 90. Alguns conceitos fundamentais:</p>
-                <ul>
-                    <li>Sintaxe básica e estrutura de programas Java</li>
-                    <li>Tipos de dados primitivos e wrappers</li>
-                    <li>Operadores e estruturas de controle</li>
-                    <li>Arrays e coleções básicas</li>
-                </ul>
-                <div class="code-editor">
-                    // Exemplo de código Java<br>
-                    public class Main {<br>
-                    &nbsp;&nbsp;public static void main(String[] args) {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Hello, World!");<br>
-                    &nbsp;&nbsp;}<br>
-                    }
-                </div>
-            </div>
-            
-            <div class="study-material">
-                <h4>Programação Orientada a Objetos</h4>
-                <p>Os quatro pilares da POO em Java:</p>
-                <ol>
-                    <li><strong>Abstração:</strong> Classes e objetos</li>
-                    <li><strong>Encapsulamento:</strong> Modificadores de acesso</li>
-                    <li><strong>Herança:</strong> Extends e implements</li>
-                    <li><strong>Polimorfismo:</strong> Sobrecarga e sobrescrita</li>
-                </ol>
-            </div>
-            
-            <div class="study-material">
-                <h4>Tratamento de Exceções</h4>
-                <p>Como lidar com erros em Java:</p>
-                <ul>
-                    <li>try-catch-finally</li>
-                    <li>Checked vs Unchecked exceptions</li>
-                    <li>Criando exceções personalizadas</li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="content-section">
-            <h3>Exercícios Práticos</h3>
-            
-            <div class="exercise">
-                <h4>Exercício 1: Calculadora Básica</h4>
-                <p>Crie uma classe Calculadora com métodos para as quatro operações básicas (soma, subtração, multiplicação e divisão).</p>
-                <p><strong>Requisitos:</strong></p>
-                <ul>
-                    <li>Métodos devem receber dois números e retornar o resultado</li>
-                    <li>Tratar divisão por zero</li>
-                    <li>Criar classe Main para testar os métodos</li>
-                </ul>
-                <div class="exercise-actions">
-                    <button class="btn btn-outline btn-sm show-solution">
-                        <i class="fas fa-lightbulb"></i> Ver Solução
-                    </button>
-                </div>
-            </div>
-            
-            <div class="exercise">
-                <h4>Exercício 2: Sistema Bancário</h4>
-                <p>Implemente um sistema bancário simples com classes Conta, ContaCorrente e ContaPoupanca.</p>
-                <p><strong>Requisitos:</strong></p>
-                <ul>
-                    <li>Classe Conta com atributos número, titular e saldo</li>
-                    <li>Métodos depositar(), sacar() e transferir()</li>
-                    <li>ContaPoupanca com método aplicarRendimento()</li>
-                </ul>
-                <div class="exercise-actions">
-                    <button class="btn btn-outline btn-sm show-solution">
-                        <i class="fas fa-lightbulb"></i> Ver Solução
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="content-section">
-            <h3>Prova de Conhecimento</h3>
-            
-            <div class="quiz-section">
-                <h4>Prova: Fundamentos de Java</h4>
-                <p>Teste seu conhecimento com estas 5 questões sobre Java básico:</p>
+            <div class="section-title">
+                <h2>Java Completo</h2>
+                <p>Domine Java desde os fundamentos até técnicas avançadas</p>
                 
-                <div class="quiz-question">
-                    <p>1. Qual é o tipo de dado em Java que representa um valor verdadeiro ou falso?</p>
-                    <ul class="quiz-options">
-                        <li class="quiz-option" data-correct="false">A) int</li>
-                        <li class="quiz-option" data-correct="true">B) boolean</li>
-                        <li class="quiz-option" data-correct="false">C) String</li>
-                        <li class="quiz-option" data-correct="false">D) float</li>
+                <div class="progress-container">
+                    <div class="progress-bar" id="java-progress"></div>
+                    <div class="progress-text" id="java-progress-text">0% completo</div>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <h3>Conteúdo para Estudo</h3>
+                
+                <div class="study-material">
+                    <h4>Fundamentos da Linguagem Java</h4>
+                    <p>Java é uma linguagem de programação orientada a objetos desenvolvida na década de 90. Alguns conceitos fundamentais:</p>
+                    <ul>
+                        <li>Sintaxe básica e estrutura de programas Java</li>
+                        <li>Tipos de dados primitivos e wrappers</li>
+                        <li>Operadores e estruturas de controle</li>
+                        <li>Arrays e coleções básicas</li>
+                    </ul>
+                    <div class="code-editor">
+                        // Exemplo de código Java<br>
+                        public class Main {<br>
+                        &nbsp;&nbsp;public static void main(String[] args) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Hello, World!");<br>
+                        &nbsp;&nbsp;}<br>
+                        }
+                    </div>
+                </div>
+                
+                <div class="study-material">
+                    <h4>Programação Orientada a Objetos</h4>
+                    <p>Os quatro pilares da POO em Java:</p>
+                    <ol>
+                        <li><strong>Abstração:</strong> Classes e objetos</li>
+                        <li><strong>Encapsulamento:</strong> Modificadores de acesso</li>
+                        <li><strong>Herança:</strong> Extends e implements</li>
+                        <li><strong>Polimorfismo:</strong> Sobrecarga e sobrescrita</li>
+                    </ol>
+                </div>
+                
+                <div class="study-material">
+                    <h4>Tratamento de Exceções</h4>
+                    <p>Como lidar com erros em Java:</p>
+                    <ul>
+                        <li>try-catch-finally</li>
+                        <li>Checked vs Unchecked exceptions</li>
+                        <li>Criando exceções personalizadas</li>
                     </ul>
                 </div>
+            </div>
+            
+            <div class="content-section">
+                <h3>Exercícios Práticos</h3>
                 
-                <div class="quiz-question">
-                    <p>2. Qual palavra-chave é usada para criar uma instância de uma classe em Java?</p>
-                    <ul class="quiz-options">
-                        <li class="quiz-option" data-correct="false">A) class</li>
-                        <li class="quiz-option" data-correct="true">B) new</li>
-                        <li class="quiz-option" data-correct="false">C) this</li>
-                        <li class="quiz-option" data-correct="false">D) extends</li>
+                <div class="exercise">
+                    <h4>Exercício 1: Calculadora Básica</h4>
+                    <p>Crie uma classe Calculadora com métodos para as quatro operações básicas (soma, subtração, multiplicação e divisão).</p>
+                    <p><strong>Requisitos:</strong></p>
+                    <ul>
+                        <li>Métodos devem receber dois números e retornar o resultado</li>
+                        <li>Tratar divisão por zero</li>
+                        <li>Criar classe Main para testar os métodos</li>
                     </ul>
+                    <div class="exercise-actions">
+                        <button class="btn btn-outline btn-sm show-solution">
+                            <i class="fas fa-lightbulb"></i> Ver Solução
+                        </button>
+                    </div>
                 </div>
                 
-                <div class="quiz-question">
-                    <p>3. Qual método é o ponto de entrada de um programa Java?</p>
-                    <ul class="quiz-options">
-                        <li class="quiz-option" data-correct="false">A) start()</li>
-                        <li class="quiz-option" data-correct="false">B) init()</li>
-                        <li class="quiz-option" data-correct="true">C) main()</li>
-                        <li class="quiz-option" data-correct="false">D) run()</li>
+                <div class="exercise">
+                    <h4>Exercício 2: Sistema Bancário</h4>
+                    <p>Implemente um sistema bancário simples com classes Conta, ContaCorrente e ContaPoupanca.</p>
+                    <p><strong>Requisitos:</strong></p>
+                    <ul>
+                        <li>Classe Conta com atributos número, titular e saldo</li>
+                        <li>Métodos depositar(), sacar() e transferir()</li>
+                        <li>ContaPoupanca com método aplicarRendimento()</li>
                     </ul>
+                    <div class="exercise-actions">
+                        <button class="btn btn-outline btn-sm show-solution">
+                            <i class="fas fa-lightbulb"></i> Ver Solução
+                        </button>
+                    </div>
                 </div>
+            </div>
+            
+            <div class="content-section">
+                <h3>Prova de Conhecimento</h3>
                 
-                <div class="quiz-result">
-                    <p>Você acertou <span id="java-score">0</span> de 3 questões.</p>
-                    <p id="java-feedback"></p>
-                </div>
-                
-                <div class="exercise-actions">
-                    <button class="btn btn-primary submit-quiz" data-course="java">
-                        <i class="fas fa-paper-plane"></i> Enviar Respostas
-                    </button>
+                <div class="quiz-section">
+                    <h4>Prova: Fundamentos de Java</h4>
+                    <p>Teste seu conhecimento com estas 5 questões sobre Java básico:</p>
+                    
+                    <div class="quiz-question">
+                        <p>1. Qual é o tipo de dado em Java que representa um valor verdadeiro ou falso?</p>
+                        <ul class="quiz-options">
+                            <li class="quiz-option" data-correct="false">A) int</li>
+                            <li class="quiz-option" data-correct="true">B) boolean</li>
+                            <li class="quiz-option" data-correct="false">C) String</li>
+                            <li class="quiz-option" data-correct="false">D) float</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <p>2. Qual palavra-chave é usada para criar uma instância de uma classe em Java?</p>
+                        <ul class="quiz-options">
+                            <li class="quiz-option" data-correct="false">A) class</li>
+                            <li class="quiz-option" data-correct="true">B) new</li>
+                            <li class="quiz-option" data-correct="false">C) this</li>
+                            <li class="quiz-option" data-correct="false">D) extends</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <p>3. Qual método é o ponto de entrada de um programa Java?</p>
+                        <ul class="quiz-options">
+                            <li class="quiz-option" data-correct="false">A) start()</li>
+                            <li class="quiz-option" data-correct="false">B) init()</li>
+                            <li class="quiz-option" data-correct="true">C) main()</li>
+                            <li class="quiz-option" data-correct="false">D) run()</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="quiz-result">
+                        <p>Você acertou <span id="java-score">0</span> de 3 questões.</p>
+                        <p id="java-feedback"></p>
+                    </div>
+                    
+                    <div class="exercise-actions">
+                        <button class="btn btn-primary submit-quiz" data-course="java">
+                            <i class="fas fa-paper-plane"></i> Enviar Respostas
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     
     <!-- Curso de HTML/CSS -->
-    <div id="html-course" class="container course-content-page">
-        <a href="#cursos" class="back-to-courses">
-            <i class="fas fa-arrow-left"></i> Voltar para todos os cursos
-        </a>
-        
-        <div class="section-title">
-            <h2>HTML & CSS Moderno</h2>
-            <p>Aprenda a criar websites modernos e responsivos</p>
+    <div id="html-course" class="course-content-page">
+        <div class="container">
+            <a href="#cursos" class="back-to-courses">
+                <i class="fas fa-arrow-left"></i> Voltar para todos os cursos
+            </a>
             
-            <div class="progress-container">
-                <div class="progress-bar" id="html-progress"></div>
-                <div class="progress-text" id="html-progress-text">0% completo</div>
-            </div>
-        </div>
-        
-        <div class="content-section">
-            <h3>Conteúdo para Estudo</h3>
-            
-            <div class="study-material">
-                <h4>HTML5 Semântico</h4>
-                <p>HTML5 introduziu elementos semânticos que melhoram a estrutura e acessibilidade:</p>
-                <ul>
-                    <li>&lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;footer&gt;</li>
-                    <li>&lt;article&gt;, &lt;section&gt;, &lt;aside&gt;</li>
-                    <li>&lt;figure&gt; e &lt;figcaption&gt; para imagens</li>
-                    <li>Formulários avançados com novos tipos de input</li>
-                </ul>
-                <div class="code-editor">
-                    &lt;!DOCTYPE html&gt;<br>
-                    &lt;html&gt;<br>
-                    &lt;head&gt;<br>
-                    &nbsp;&nbsp;&lt;title&gt;Página Semântica&lt;/title&gt;<br>
-                    &lt;/head&gt;<br>
-                    &lt;body&gt;<br>
-                    &nbsp;&nbsp;&lt;header&gt;<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Meu Site&lt;/h1&gt;<br>
-                    &nbsp;&nbsp;&lt;/header&gt;<br>
-                    &nbsp;&nbsp;&lt;nav&gt;...&lt;/nav&gt;<br>
-                    &nbsp;&nbsp;&lt;main&gt;...&lt;/main&gt;<br>
-                    &lt;/body&gt;<br>
-                    &lt;/html&gt;
-                </div>
-            </div>
-            
-            <div class="study-material">
-                <h4>CSS3 Moderno</h4>
-                <p>Recursos avançados do CSS3 para layouts modernos:</p>
-                <ol>
-                    <li><strong>Flexbox:</strong> Layout unidimensional</li>
-                    <li><strong>Grid:</strong> Layout bidimensional</li>
-                    <li><strong>Animações:</strong> @keyframes e transitions</li>
-                    <li><strong>Variáveis CSS:</strong> Para valores reutilizáveis</li>
-                </ol>
-            </div>
-            
-            <div class="study-material">
-                <h4>Design Responsivo</h4>
-                <p>Técnicas para criar sites que funcionam em qualquer dispositivo:</p>
-                <ul>
-                    <li>Media queries</li>
-                    <li>Unidades relativas (em, rem, vh, vw)</li>
-                    <li>Imagens responsivas</li>
-                    <li>Mobile-first design</li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="content-section">
-            <h3>Exercícios Práticos</h3>
-            
-            <div class="exercise">
-                <h4>Exercício 1: Layout com Flexbox</h4>
-                <p>Crie um layout de galeria de imagens responsiva usando Flexbox.</p>
-                <p><strong>Requisitos:</strong></p>
-                <ul>
-                    <li>6 imagens dispostas em 2 linhas de 3 colunas em desktop</li>
-                    <li>Em mobile, deve ficar 1 coluna com 6 linhas</li>
-                    <li>Adicionar hover effects nas imagens</li>
-                </ul>
-                <div class="exercise-actions">
-                    <button class="btn btn-outline btn-sm show-solution">
-                        <i class="fas fa-lightbulb"></i> Ver Solução
-                    </button>
-                </div>
-            </div>
-            
-            <div class="exercise">
-                <h4>Exercício 2: Formulário Acessível</h4>
-                <p>Crie um formulário de contato semântico e acessível.</p>
-                <p><strong>Requisitos:</strong></p>
-                <ul>
-                    <li>Campos: nome, email, telefone, mensagem</li>
-                    <li>Validação básica com HTML5</li>
-                    <li>Estilização moderna com CSS</li>
-                    <li>Labels associados corretamente aos inputs</li>
-                </ul>
-                <div class="exercise-actions">
-                    <button class="btn btn-outline btn-sm show-solution">
-                        <i class="fas fa-lightbulb"></i> Ver Solução
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="content-section">
-            <h3>Prova de Conhecimento</h3>
-            
-            <div class="quiz-section">
-                <h4>Prova: HTML5 e CSS3</h4>
-                <p>Teste seu conhecimento com estas 5 questões sobre HTML e CSS:</p>
+            <div class="section-title">
+                <h2>HTML & CSS Moderno</h2>
+                <p>Aprenda a criar websites modernos e responsivos</p>
                 
-                <div class="quiz-question">
-                    <p>1. Qual elemento HTML5 é usado para representar conteúdo independente?</p>
-                    <ul class="quiz-options">
-                        <li class="quiz-option" data-correct="false">A) &lt;div&gt;</li>
-                        <li class="quiz-option" data-correct="true">B) &lt;article&gt;</li>
-                        <li class="quiz-option" data-correct="false">C) &lt;section&gt;</li>
-                        <li class="quiz-option" data-correct="false">D) &lt;span&gt;</li>
+                <div class="progress-container">
+                    <div class="progress-bar" id="html-progress"></div>
+                    <div class="progress-text" id="html-progress-text">0% completo</div>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <h3>Conteúdo para Estudo</h3>
+                
+                <div class="study-material">
+                    <h4>HTML5 Semântico</h4>
+                    <p>HTML5 introduziu elementos semânticos que melhoram a estrutura e acessibilidade:</p>
+                    <ul>
+                        <li>&lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;footer&gt;</li>
+                        <li>&lt;article&gt;, &lt;section&gt;, &lt;aside&gt;</li>
+                        <li>&lt;figure&gt; e &lt;figcaption&gt; para imagens</li>
+                        <li>Formulários avançados com novos tipos de input</li>
+                    </ul>
+                    <div class="code-editor">
+                        &lt;!DOCTYPE html&gt;<br>
+                        &lt;html&gt;<br>
+                        &lt;head&gt;<br>
+                        &nbsp;&nbsp;&lt;title&gt;Página Semântica&lt;/title&gt;<br>
+                        &lt;/head&gt;<br>
+                        &lt;body&gt;<br>
+                        &nbsp;&nbsp;&lt;header&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Meu Site&lt;/h1&gt;<br>
+                        &nbsp;&nbsp;&lt;/header&gt;<br>
+                        &nbsp;&nbsp;&lt;nav&gt;...&lt;/nav&gt;<br>
+                        &nbsp;&nbsp;&lt;main&gt;...&lt;/main&gt;<br>
+                        &lt;/body&gt;<br>
+                        &lt;/html&gt;
+                    </div>
+                </div>
+                
+                <div class="study-material">
+                    <h4>CSS3 Moderno</h4>
+                    <p>Recursos avançados do CSS3 para layouts modernos:</p>
+                    <ol>
+                        <li><strong>Flexbox:</strong> Layout unidimensional</li>
+                        <li><strong>Grid:</strong> Layout bidimensional</li>
+                        <li><strong>Animações:</strong> @keyframes e transitions</li>
+                        <li><strong>Variáveis CSS:</strong> Para valores reutilizáveis</li>
+                    </ol>
+                </div>
+                
+                <div class="study-material">
+                    <h4>Design Responsivo</h4>
+                    <p>Técnicas para criar sites que funcionam em qualquer dispositivo:</p>
+                    <ul>
+                        <li>Media queries</li>
+                        <li>Unidades relativas (em, rem, vh, vw)</li>
+                        <li>Imagens responsivas</li>
+                        <li>Mobile-first design</li>
                     </ul>
                 </div>
+            </div>
+            
+            <div class="content-section">
+                <h3>Exercícios Práticos</h3>
                 
-                <div class="quiz-question">
-                    <p>2. Qual propriedade CSS é usada para criar layouts flexbox?</p>
-                    <ul class="quiz-options">
-                        <li class="quiz-option" data-correct="false">A) display: grid</li>
-                        <li class="quiz-option" data-correct="true">B) display: flex</li>
-                        <li class="quiz-option" data-correct="false">C) display: block</li>
-                        <li class="quiz-option" data-correct="false">D) display: inline</li>
+                <div class="exercise">
+                    <h4>Exercício 1: Layout com Flexbox</h4>
+                    <p>Crie um layout de galeria de imagens responsiva usando Flexbox.</p>
+                    <p><strong>Requisitos:</strong></p>
+                    <ul>
+                        <li>6 imagens dispostas em 2 linhas de 3 colunas em desktop</li>
+                        <li>Em mobile, deve ficar 1 coluna com 6 linhas</li>
+                        <li>Adicionar hover effects nas imagens</li>
                     </ul>
+                    <div class="exercise-actions">
+                        <button class="btn btn-outline btn-sm show-solution">
+                            <i class="fas fa-lightbulb"></i> Ver Solução
+                        </button>
+                    </div>
                 </div>
                 
-                <div class="quiz-question">
-                    <p>3. Qual meta tag é essencial para design responsivo?</p>
-                    <ul class="quiz-options">
-                        <li class="quiz-option" data-correct="true">A) &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</li>
-                        <li class="quiz-option" data-correct="false">B) &lt;meta charset="UTF-8"&gt;</li>
-                        <li class="quiz-option" data-correct="false">C) &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;</li>
-                        <li class="quiz-option" data-correct="false">D) &lt;meta name="description" content="..."&gt;</li>
+                <div class="exercise">
+                    <h4>Exercício 2: Formulário Acessível</h4>
+                    <p>Crie um formulário de contato semântico e acessível.</p>
+                    <p><strong>Requisitos:</strong></p>
+                    <ul>
+                        <li>Campos: nome, email, telefone, mensagem</li>
+                        <li>Validação básica com HTML5</li>
+                        <li>Estilização moderna com CSS</li>
+                        <li>Labels associados corretamente aos inputs</li>
                     </ul>
+                    <div class="exercise-actions">
+                        <button class="btn btn-outline btn-sm show-solution">
+                            <i class="fas fa-lightbulb"></i> Ver Solução
+                        </button>
+                    </div>
                 </div>
+            </div>
+            
+            <div class="content-section">
+                <h3>Prova de Conhecimento</h3>
                 
-                <div class="quiz-result">
-                    <p>Você acertou <span id="html-score">0</span> de 3 questões.</p>
-                    <p id="html-feedback"></p>
-                </div>
-                
-                <div class="exercise-actions">
-                    <button class="btn btn-primary submit-quiz" data-course="html">
-                        <i class="fas fa-paper-plane"></i> Enviar Respostas
-                    </button>
+                <div class="quiz-section">
+                    <h4>Prova: HTML5 e CSS3</h4>
+                    <p>Teste seu conhecimento com estas 5 questões sobre HTML e CSS:</p>
+                    
+                    <div class="quiz-question">
+                        <p>1. Qual elemento HTML5 é usado para representar conteúdo independente?</p>
+                        <ul class="quiz-options">
+                            <li class="quiz-option" data-correct="false">A) &lt;div&gt;</li>
+                            <li class="quiz-option" data-correct="true">B) &lt;article&gt;</li>
+                            <li class="quiz-option" data-correct="false">C) &lt;section&gt;</li>
+                            <li class="quiz-option" data-correct="false">D) &lt;span&gt;</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <p>2. Qual propriedade CSS é usada para criar layouts flexbox?</p>
+                        <ul class="quiz-options">
+                            <li class="quiz-option" data-correct="false">A) display: grid</li>
+                            <li class="quiz-option" data-correct="true">B) display: flex</li>
+                            <li class="quiz-option" data-correct="false">C) display: block</li>
+                            <li class="quiz-option" data-correct="false">D) display: inline</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <p>3. Qual meta tag é essencial para design responsivo?</p>
+                        <ul class="quiz-options">
+                            <li class="quiz-option" data-correct="true">A) &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</li>
+                            <li class="quiz-option" data-correct="false">B) &lt;meta charset="UTF-8"&gt;</li>
+                            <li class="quiz-option" data-correct="false">C) &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;</li>
+                            <li class="quiz-option" data-correct="false">D) &lt;meta name="description" content="..."&gt;</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="quiz-result">
+                        <p>Você acertou <span id="html-score">0</span> de 3 questões.</p>
+                        <p id="html-feedback"></p>
+                    </div>
+                    
+                    <div class="exercise-actions">
+                        <button class="btn btn-primary submit-quiz" data-course="html">
+                            <i class="fas fa-paper-plane"></i> Enviar Respostas
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     
     <!-- Curso de JavaScript -->
-    <div id="js-course" class="container course-content-page">
-        <a href="#cursos" class="back-to-courses">
-            <i class="fas fa-arrow-left"></i> Voltar para todos os cursos
-        </a>
-        
-        <div class="section-title">
-            <h2>JavaScript Moderno</h2>
-            <p>Aprenda JavaScript ES6+, TypeScript e Node.js</p>
+    <div id="js-course" class="course-content-page">
+        <div class="container">
+            <a href="#cursos" class="back-to-courses">
+                <i class="fas fa-arrow-left"></i> Voltar para todos os cursos
+            </a>
             
-            <div class="progress-container">
-                <div class="progress-bar" id="js-progress"></div>
-                <div class="progress-text" id="js-progress-text">0% completo</div>
+            <div class="section-title">
+                <h2>JavaScript Moderno</h2>
+                <p>Aprenda JavaScript ES6+, TypeScript e Node.js</p>
+                
+                <div class="progress-container">
+                    <div class="progress-bar" id="js-progress"></div>
+                    <div class="progress-text" id="js-progress-text">0% completo</div>
+                </div>
             </div>
-        </div>
-        
-        <div class="content-section">
-            <h3>Conteúdo para Estudo</h3>
             
-            <div class="study-material">
-                <h4>JavaScript Básico</h4>
-                <p>Fundamentos da linguagem JavaScript:</p>
-                <ul>
-                    <li>Variáveis (var, let, const)</li>
-                    <li>Tipos de dados e operadores</li>
-                    <li>Estruturas de controle (if, for, while)</li>
-                    <li>Funções e escopo</li>
-                </ul>
-                <div class="code-editor">
-                    // Exemplo de código JavaScript<br>
-                    function saudacao(nome) {<br>
-                    &nbsp;&nbsp;return `Olá, ${nome}!`;<br>
-                    }<br><br>
+            <div class="content-section">
+                <h3>Conteúdo para Estudo</h3>
+                
+                <div class="study-material">
+                    <h4>JavaScript Básico</h4>
+                    <p>Fundamentos da linguagem JavaScript:</p>
+                    <ul>
+                        <li>Variáveis (var, let, const)</li>
+                        <li>Tipos de dados e operadores</li>
+                        <li>Estruturas de controle (if, for, while)</li>
+                        <li>Funções e escopo</li>
+                    </ul>
+                    <div class="code-editor">
+                        // Exemplo de código JavaScript<br>
+                        function saudacao(nome) {<br>
+                        &nbsp;&nbsp;return `Olá, ${nome}!`;<br>
+                        }<br><br>
+                        
+                        const mensagem = saudacao("Mundo");<br>
+                        console.log(mensagem); // "Olá, Mundo!"
+                    </div>
+                </div>
+                
+                <div class="study-material">
+                    <h4>JavaScript Moderno (ES6+)</h4>
+                    <p>Recursos modernos do JavaScript:</p>
+                    <ol>
+                        <li><strong>Arrow functions:</strong> Sintaxe concisa para funções</li>
+                        <li><strong>Template literals:</strong> Strings com interpolação</li>
+                        <li><strong>Destructuring:</strong> Extração de valores de objetos/arrays</li>
+                        <li><strong>Async/await:</strong> Trabalhar com operações assíncronas</li>
+                    </ol>
+                </div>
+                
+                <div class="study-material">
+                    <h4>DOM Manipulation</h4>
+                    <p>Como interagir com a página web:</p>
+                    <ul>
+                        <li>Selecionar elementos (querySelector, getElementById)</li>
+                        <li>Adicionar/remover elementos</li>
+                        <li>Manipular classes e estilos</li>
+                        <li>Event listeners</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <h3>Exercícios Práticos</h3>
+                
+                <div class="exercise">
+                    <h4>Exercício 1: To-Do List</h4>
+                    <p>Crie uma lista de tarefas interativa.</p>
+                    <p><strong>Requisitos:</strong></p>
+                    <ul>
+                        <li>Adicionar novas tarefas</li>
+                        <li>Marcar tarefas como completas</li>
+                        <li>Remover tarefas</li>
+                        <li>Salvar tarefas no localStorage</li>
+                    </ul>
+                    <div class="exercise-actions">
+                        <button class="btn btn-outline btn-sm show-solution">
+                            <i class="fas fa-lightbulb"></i> Ver Solução
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="exercise">
+                    <h4>Exercício 2: Fetch API</h4>
+                    <p>Consuma uma API pública e exiba os dados.</p>
+                    <p><strong>Requisitos:</strong></p>
+                    <ul>
+                        <li>Usar fetch ou axios para buscar dados</li>
+                        <li>Exibir os dados em uma tabela ou cards</li>
+                        <li>Tratar erros da requisição</li>
+                        <li>Adicionar loading enquanto os dados carregam</li>
+                    </ul>
+                    <div class="exercise-actions">
+                        <button class="btn btn-outline btn-sm show-solution">
+                            <i class="fas fa-lightbulb"></i> Ver Solução
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <h3>Prova de Conhecimento</h3>
+                
+                <div class="quiz-section">
+                    <h4>Prova: JavaScript Moderno</h4>
+                    <p>Teste seu conhecimento com estas 5 questões sobre JavaScript:</p>
                     
-                    const mensagem = saudacao("Mundo");<br>
-                    console.log(mensagem); // "Olá, Mundo!"
-                </div>
-            </div>
-            
-            <div class="study-material">
-                <h4>JavaScript Moderno (ES6+)</h4>
-                <p>Recursos modernos do JavaScript:</p>
-                <ol>
-                    <li><strong>Arrow functions:</strong> Sintaxe concisa para funções</li>
-                    <li><strong>Template literals:</strong> Strings com interpolação</li>
-                    <li><strong>Destructuring:</strong> Extração de valores de objetos/arrays</li>
-                    <li><strong>Async/await:</strong> Trabalhar com operações assíncronas</li>
-                </ol>
-            </div>
-            
-            <div class="study-material">
-                <h4>DOM Manipulation</h4>
-                <p>Como interagir com a página web:</p>
-                <ul>
-                    <li>Selecionar elementos (querySelector, getElementById)</li>
-                    <li>Adicionar/remover elementos</li>
-                    <li>Manipular classes e estilos</li>
-                    <li>Event listeners</li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="content-section">
-            <h3>Exercícios Práticos</h3>
-            
-            <div class="exercise">
-                <h4>Exercício 1: To-Do List</h4>
-                <p>Crie uma lista de tarefas interativa.</p>
-                <p><strong>Requisitos:</strong></p>
-                <ul>
-                    <li>Adicionar novas tarefas</li>
-                    <li>Marcar tarefas como completas</li>
-                    <li>Remover tarefas</li>
-                    <li>Salvar tarefas no localStorage</li>
-                </ul>
-                <div class="exercise-actions">
-                    <button class="btn btn-outline btn-sm show-solution">
-                        <i class="fas fa-lightbulb"></i> Ver Solução
-                    </button>
-                </div>
-            </div>
-            
-            <div class="exercise">
-                <h4>Exercício 2: Fetch API</h4>
-                <p>Consuma uma API pública e exiba os dados.</p>
-                <p><strong>Requisitos:</strong></p>
-                <ul>
-                    <li>Usar fetch ou axios para buscar dados</li>
-                    <li>Exibir os dados em uma tabela ou cards</li>
-                    <li>Tratar erros da requisição</li>
-                    <li>Adicionar loading enquanto os dados carregam</li>
-                </ul>
-                <div class="exercise-actions">
-                    <button class="btn btn-outline btn-sm show-solution">
-                        <i class="fas fa-lightbulb"></i> Ver Solução
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="content-section">
-            <h3>Prova de Conhecimento</h3>
-            
-            <div class="quiz-section">
-                <h4>Prova: JavaScript Moderno</h4>
-                <p>Teste seu conhecimento com estas 5 questões sobre JavaScript:</p>
-                
-                <div class="quiz-question">
-                    <p>1. Qual método é usado para transformar um array em uma string?</p>
-                    <ul class="quiz-options">
-                        <li class="quiz-option" data-correct="false">A) array.toString()</li>
-                        <li class="quiz-option" data-correct="false">B) array.join()</li>
-                        <li class="quiz-option" data-correct="true">C) Ambos acima</li>
-                        <li class="quiz-option" data-correct="false">D) Nenhum dos acima</li>
-                    </ul>
-                </div>
-                
-                <div class="quiz-question">
-                    <p>2. Qual é a diferença entre let e var em JavaScript?</p>
-                    <ul class="quiz-options">
-                        <li class="quiz-option" data-correct="false">A) let tem escopo global, var tem escopo de função</li>
-                        <li class="quiz-option" data-correct="true">B) let tem escopo de bloco, var tem escopo de função</li>
-                        <li class="quiz-option" data-correct="false">C) Não há diferença</li>
-                        <li class="quiz-option" data-correct="false">D) var é mais moderno que let</li>
-                    </ul>
-                </div>
-                
-                <div class="quiz-question">
-                    <p>3. O que o operador spread (...) faz em JavaScript?</p>
-                    <ul class="quiz-options">
-                        <li class="quiz-option" data-correct="false">A) Concatena arrays</li>
-                        <li class="quiz-option" data-correct="false">B) Copia propriedades de objetos</li>
-                        <li class="quiz-option" data-correct="false">C) Passa múltiplos argumentos para funções</li>
-                        <li class="quiz-option" data-correct="true">D) Todas as opções acima</li>
-                    </ul>
-                </div>
-                
-                <div class="quiz-result">
-                    <p>Você acertou <span id="js-score">0</span> de 3 questões.</p>
-                    <p id="js-feedback"></p>
-                </div>
-                
-                <div class="exercise-actions">
-                    <button class="btn btn-primary submit-quiz" data-course="js">
-                        <i class="fas fa-paper-plane"></i> Enviar Respostas
-                    </button>
+                    <div class="quiz-question">
+                        <p>1. Qual método é usado para transformar um array em uma string?</p>
+                        <ul class="quiz-options">
+                            <li class="quiz-option" data-correct="false">A) array.toString()</li>
+                            <li class="quiz-option" data-correct="false">B) array.join()</li>
+                            <li class="quiz-option" data-correct="true">C) Ambos acima</li>
+                            <li class="quiz-option" data-correct="false">D) Nenhum dos acima</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <p>2. Qual é a diferença entre let e var em JavaScript?</p>
+                        <ul class="quiz-options">
+                            <li class="quiz-option" data-correct="false">A) let tem escopo global, var tem escopo de função</li>
+                            <li class="quiz-option" data-correct="true">B) let tem escopo de bloco, var tem escopo de função</li>
+                            <li class="quiz-option" data-correct="false">C) Não há diferença</li>
+                            <li class="quiz-option" data-correct="false">D) var é mais moderno que let</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <p>3. O que o operador spread (...) faz em JavaScript?</p>
+                        <ul class="quiz-options">
+                            <li class="quiz-option" data-correct="false">A) Concatena arrays</li>
+                            <li class="quiz-option" data-correct="false">B) Copia propriedades de objetos</li>
+                            <li class="quiz-option" data-correct="false">C) Passa múltiplos argumentos para funções</li>
+                            <li class="quiz-option" data-correct="true">D) Todas as opções acima</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="quiz-result">
+                        <p>Você acertou <span id="js-score">0</span> de 3 questões.</p>
+                        <p id="js-feedback"></p>
+                    </div>
+                    
+                    <div class="exercise-actions">
+                        <button class="btn btn-primary submit-quiz" data-course="js">
+                            <i class="fas fa-paper-plane"></i> Enviar Respostas
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     
     <!-- Curso de Python -->
-    <div id="python-course" class="container course-content-page">
-        <a href="#cursos" class="back-to-courses">
-            <i class="fas fa-arrow-left"></i> Voltar para todos os cursos
-        </a>
-        
-        <div class="section-title">
-            <h2>Python Completo</h2>
-            <p>Do básico ao desenvolvimento web e análise de dados</p>
+    <div id="python-course" class="course-content-page">
+        <div class="container">
+            <a href="#cursos" class="back-to-courses">
+                <i class="fas fa-arrow-left"></i> Voltar para todos os cursos
+            </a>
             
-            <div class="progress-container">
-                <div class="progress-bar" id="python-progress"></div>
-                <div class="progress-text" id="python-progress-text">0% completo</div>
+            <div class="section-title">
+                <h2>Python Completo</h2>
+                <p>Do básico ao desenvolvimento web e análise de dados</p>
+                
+                <div class="progress-container">
+                    <div class="progress-bar" id="python-progress"></div>
+                    <div class="progress-text" id="python-progress-text">0% completo</div>
+                </div>
             </div>
-        </div>
-        
-        <div class="content-section">
-            <h3>Conteúdo para Estudo</h3>
             
-            <div class="study-material">
-                <h4>Fundamentos de Python</h4>
-                <p>Python é uma linguagem de programação interpretada de alto nível:</p>
-                <ul>
-                    <li>Sintaxe limpa e legível</li>
-                    <li>Tipos de dados básicos (int, float, str, bool, list, tuple, dict, set)</li>
-                    <li>Estruturas de controle de fluxo</li>
-                    <li>Funções e módulos</li>
-                </ul>
-                <div class="code-editor">
-                    # Exemplo de código Python<br>
-                    def saudacao(nome):<br>
-                    &nbsp;&nbsp;return f"Olá, {nome}!"<br><br>
+            <div class="content-section">
+                <h3>Conteúdo para Estudo</h3>
+                
+                <div class="study-material">
+                    <h4>Fundamentos de Python</h4>
+                    <p>Python é uma linguagem de programação interpretada de alto nível:</p>
+                    <ul>
+                        <li>Sintaxe limpa e legível</li>
+                        <li>Tipos de dados básicos (int, float, str, bool, list, tuple, dict, set)</li>
+                        <li>Estruturas de controle de fluxo</li>
+                        <li>Funções e módulos</li>
+                    </ul>
+                    <div class="code-editor">
+                        # Exemplo de código Python<br>
+                        def saudacao(nome):<br>
+                        &nbsp;&nbsp;return f"Olá, {nome}!"<br><br>
+                        
+                        mensagem = saudacao("Mundo")<br>
+                        print(mensagem)  # "Olá, Mundo!"
+                    </div>
+                </div>
+                
+                <div class="study-material">
+                    <h4>Programação Orientada a Objetos em Python</h4>
+                    <p>Como implementar POO em Python:</p>
+                    <ol>
+                        <li><strong>Classes e objetos:</strong> Definição e instanciação</li>
+                        <li><strong>Métodos:</strong> Instância, classe e estáticos</li>
+                        <li><strong>Herança:</strong> Simples e múltipla</li>
+                        <li><strong>Polimorfismo:</strong> Sobrescrita de métodos</li>
+                    </ol>
+                </div>
+                
+                <div class="study-material">
+                    <h4>Manipulação de Dados com Pandas</h4>
+                    <p>Biblioteca essencial para análise de dados:</p>
+                    <ul>
+                        <li>DataFrames e Series</li>
+                        <li>Leitura e escrita de arquivos (CSV, Excel)</li>
+                        <li>Filtragem e seleção de dados</li>
+                        <li>Operações estatísticas básicas</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <h3>Exercícios Práticos</h3>
+                
+                <div class="exercise">
+                    <h4>Exercício 1: Calculadora de IMC</h4>
+                    <p>Crie uma função que calcula o Índice de Massa Corporal (IMC).</p>
+                    <p><strong>Requisitos:</strong></p>
+                    <ul>
+                        <li>Receber peso (kg) e altura (m)</li>
+                        <li>Retornar o IMC e a classificação</li>
+                        <li>Tratar entradas inválidas</li>
+                        <li>Criar interface simples com input()</li>
+                    </ul>
+                    <div class="exercise-actions">
+                        <button class="btn btn-outline btn-sm show-solution">
+                            <i class="fas fa-lightbulb"></i> Ver Solução
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="exercise">
+                    <h4>Exercício 2: Análise de Dados</h4>
+                    <p>Analise um dataset de vendas usando Pandas.</p>
+                    <p><strong>Requisitos:</strong></p>
+                    <ul>
+                        <li>Carregar dados de um arquivo CSV</li>
+                        <li>Calcular total de vendas por produto</li>
+                        <li>Identificar o produto mais vendido</li>
+                        <li>Gerar um gráfico simples com Matplotlib</li>
+                    </ul>
+                    <div class="exercise-actions">
+                        <button class="btn btn-outline btn-sm show-solution">
+                            <i class="fas fa-lightbulb"></i> Ver Solução
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <h3>Prova de Conhecimento</h3>
+                
+                <div class="quiz-section">
+                    <h4>Prova: Python Básico</h4>
+                    <p>Teste seu conhecimento com estas 5 questões sobre Python:</p>
                     
-                    mensagem = saudacao("Mundo")<br>
-                    print(mensagem)  # "Olá, Mundo!"
-                </div>
-            </div>
-            
-            <div class="study-material">
-                <h4>Programação Orientada a Objetos em Python</h4>
-                <p>Como implementar POO em Python:</p>
-                <ol>
-                    <li><strong>Classes e objetos:</strong> Definição e instanciação</li>
-                    <li><strong>Métodos:</strong> Instância, classe e estáticos</li>
-                    <li><strong>Herança:</strong> Simples e múltipla</li>
-                    <li><strong>Polimorfismo:</strong> Sobrescrita de métodos</li>
-                </ol>
-            </div>
-            
-            <div class="study-material">
-                <h4>Manipulação de Dados com Pandas</h4>
-                <p>Biblioteca essencial para análise de dados:</p>
-                <ul>
-                    <li>DataFrames e Series</li>
-                    <li>Leitura e escrita de arquivos (CSV, Excel)</li>
-                    <li>Filtragem e seleção de dados</li>
-                    <li>Operações estatísticas básicas</li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="content-section">
-            <h3>Exercícios Práticos</h3>
-            
-            <div class="exercise">
-                <h4>Exercício 1: Calculadora de IMC</h4>
-                <p>Crie uma função que calcula o Índice de Massa Corporal (IMC).</p>
-                <p><strong>Requisitos:</strong></p>
-                <ul>
-                    <li>Receber peso (kg) e altura (m)</li>
-                    <li>Retornar o IMC e a classificação</li>
-                    <li>Tratar entradas inválidas</li>
-                    <li>Criar interface simples com input()</li>
-                </ul>
-                <div class="exercise-actions">
-                    <button class="btn btn-outline btn-sm show-solution">
-                        <i class="fas fa-lightbulb"></i> Ver Solução
-                    </button>
-                </div>
-            </div>
-            
-            <div class="exercise">
-                <h4>Exercício 2: Análise de Dados</h4>
-                <p>Analise um dataset de vendas usando Pandas.</p>
-                <p><strong>Requisitos:</strong></p>
-                <ul>
-                    <li>Carregar dados de um arquivo CSV</li>
-                    <li>Calcular total de vendas por produto</li>
-                    <li>Identificar o produto mais vendido</li>
-                    <li>Gerar um gráfico simples com Matplotlib</li>
-                </ul>
-                <div class="exercise-actions">
-                    <button class="btn btn-outline btn-sm show-solution">
-                        <i class="fas fa-lightbulb"></i> Ver Solução
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="content-section">
-            <h3>Prova de Conhecimento</h3>
-            
-            <div class="quiz-section">
-                <h4>Prova: Python Básico</h4>
-                <p>Teste seu conhecimento com estas 5 questões sobre Python:</p>
-                
-                <div class="quiz-question">
-                    <p>1. Como se define uma função em Python?</p>
-                    <ul class="quiz-options">
-                        <li class="quiz-option" data-correct="false">A) function minhaFuncao() {}</li>
-                        <li class="quiz-option" data-correct="true">B) def minha_funcao():</li>
-                        <li class="quiz-option" data-correct="false">C) def minhaFuncao() {}</li>
-                        <li class="quiz-option" data-correct="false">D) function minha_funcao():</li>
-                    </ul>
-                </div>
-                
-                <div class="quiz-question">
-                    <p>2. Qual estrutura de dados em Python é mutável e ordenada?</p>
-                    <ul class="quiz-options">
-                        <li class="quiz-option" data-correct="false">A) tuple</li>
-                        <li class="quiz-option" data-correct="true">B) list</li>
-                        <li class="quiz-option" data-correct="false">C) str</li>
-                        <li class="quiz-option" data-correct="false">D) set</li>
-                    </ul>
-                </div>
-                
-                <div class="quiz-question">
-                    <p>3. Como se itera sobre um dicionário em Python?</p>
-                    <ul class="quiz-options">
-                        <li class="quiz-option" data-correct="false">A) for key in dict.keys()</li>
-                        <li class="quiz-option" data-correct="false">B) for value in dict.values()</li>
-                        <li class="quiz-option" data-correct="false">C) for key, value in dict.items()</li>
-                        <li class="quiz-option" data-correct="true">D) Todas as opções acima</li>
-                    </ul>
-                </div>
-                
-                <div class="quiz-result">
-                    <p>Você acertou <span id="python-score">0</span> de 3 questões.</p>
-                    <p id="python-feedback"></p>
-                </div>
-                
-                <div class="exercise-actions">
-                    <button class="btn btn-primary submit-quiz" data-course="python">
-                        <i class="fas fa-paper-plane"></i> Enviar Respostas
-                    </button>
+                    <div class="quiz-question">
+                        <p>1. Como se define uma função em Python?</p>
+                        <ul class="quiz-options">
+                            <li class="quiz-option" data-correct="false">A) function minhaFuncao() {}</li>
+                            <li class="quiz-option" data-correct="true">B) def minha_funcao():</li>
+                            <li class="quiz-option" data-correct="false">C) def minhaFuncao() {}</li>
+                            <li class="quiz-option" data-correct="false">D) function minha_funcao():</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <p>2. Qual estrutura de dados em Python é mutável e ordenada?</p>
+                        <ul class="quiz-options">
+                            <li class="quiz-option" data-correct="false">A) tuple</li>
+                            <li class="quiz-option" data-correct="true">B) list</li>
+                            <li class="quiz-option" data-correct="false">C) str</li>
+                            <li class="quiz-option" data-correct="false">D) set</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <p>3. Como se itera sobre um dicionário em Python?</p>
+                        <ul class="quiz-options">
+                            <li class="quiz-option" data-correct="false">A) for key in dict.keys()</li>
+                            <li class="quiz-option" data-correct="false">B) for value in dict.values()</li>
+                            <li class="quiz-option" data-correct="false">C) for key, value in dict.items()</li>
+                            <li class="quiz-option" data-correct="true">D) Todas as opções acima</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="quiz-result">
+                        <p>Você acertou <span id="python-score">0</span> de 3 questões.</p>
+                        <p id="python-feedback"></p>
+                    </div>
+                    
+                    <div class="exercise-actions">
+                        <button class="btn btn-primary submit-quiz" data-course="python">
+                            <i class="fas fa-paper-plane"></i> Enviar Respostas
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1845,6 +2008,60 @@
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer id="contato">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <a href="#" class="footer-logo">
+                        <i class="fas fa-code footer-logo-icon"></i>
+                        <span>CodeMaster</span>
+                    </a>
+                    <p>Plataforma de ensino de programação gratuita com foco em preparar desenvolvedores para o mercado de trabalho.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Cursos</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Java Completo</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> HTML & CSS Moderno</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> JavaScript Moderno</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Python Completo</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Links Úteis</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Sobre Nós</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Termos de Uso</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Política de Privacidade</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Perguntas Frequentes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-envelope"></i> contato@codemaster.com</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> (11) 99999-9999</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> São Paulo, SP</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 CodeMaster. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
     <!-- Toast Notification -->
     <div class="toast" id="toast">
         <i class="fas fa-check-circle"></i>
@@ -1874,6 +2091,7 @@
         const supportHeroBtn = document.getElementById('supportHeroBtn');
         const closeSupportModal = document.getElementById('closeSupportModal');
         const copyPixKey = document.getElementById('copyPixKey');
+        const navLinks = document.querySelectorAll('.nav-link');
         
         // Event Listeners
         supportBtn.addEventListener('click', () => supportModal.style.display = 'flex');
@@ -1917,6 +2135,14 @@
                 if (navMenu.classList.contains('active')) {
                     toggleMenu();
                 }
+            });
+        });
+        
+        // Ativar link atual na navegação
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
             });
         });
         
@@ -2225,11 +2451,11 @@
             
             // Cor da barra baseada no progresso
             if (progress >= 70) {
-                progressBar.style.backgroundColor = 'var(--success)';
+                progressBar.style.background = 'var(--success)';
             } else if (progress >= 30) {
-                progressBar.style.backgroundColor = 'var(--warning)';
+                progressBar.style.background = 'var(--warning)';
             } else {
-                progressBar.style.backgroundColor = 'var(--danger)';
+                progressBar.style.background = 'var(--danger)';
             }
         }
         
